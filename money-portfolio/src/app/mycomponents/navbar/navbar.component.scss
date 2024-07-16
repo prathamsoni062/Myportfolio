@@ -1,0 +1,48 @@
+.spacer {
+    flex: 1 1 auto;
+}
+
+.mat-toolbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+}
+
+.custom-toolbar {
+    background:rgba(0, 0, 0, 0.1);
+}
+
+
+.nav-button:last-child {
+    margin-right: 0;
+    /* Remove margin from the last button */
+}
+
+.nav-button {
+    color: black;
+    background-color: transparent !important;
+    /* No background */
+    box-shadow: none !important;
+    /* Remove shadow */
+    border: none !important;
+    /* Remove border */
+    margin-right: 15px;
+    /* Adds spacing between buttons */
+}
+
+.nav-button:hover {
+    background-color: rgba(0, 0, 0, 0.1) !important;
+    /* Light grey hover background */
+}
+
+.bold-text {
+    color: rgb(66, 66, 66);
+    font-weight: bold; /* Make text bold */
+  }
+
+  .profile-icon {
+    margin-left: 15px; /* Space before profile icon */
+    color: white; /* Change color if needed */
+  }
