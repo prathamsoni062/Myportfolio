@@ -1,31 +1,50 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { NavbarComponent } from './mycomponents/navbar/navbar.component';
-import { DashboardComponent } from './mycomponents/dashboard/dashboard.component';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
-import { SharedModule } from './shared/shared.module';
+import { TranslateModule } from '@ngx-translate/core';
+import { AngularMaterialModule } from '../agular-material/angular-material.module';
 
-const components = [NavbarComponent, DashboardComponent];
+const components = [
+
+] as const;
+
+const directives = [
+
+] as const;
+
+const services = [
+
+] as const;
+
+const pipes = [
+
+] as const;
 @NgModule({
-  declarations: [AppComponent, ...components],
+  declarations: [...components,...directives,...pipes],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    TranslateModule,
     BrowserAnimationsModule,
-    SharedModule,
+    AngularMaterialModule,
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
     MatIconModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent],
+  providers: [...services],
+  exports: [ 
+    ...components,
+    ...directives,
+    ...pipes,
+    TranslateModule,
+    AngularMaterialModule
+
+  ]
 })
-export class AppModule {}
+export class SharedModule {}
