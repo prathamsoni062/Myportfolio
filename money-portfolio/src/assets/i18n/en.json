@@ -1,0 +1,7 @@
+{
+    "portal":{
+        "name":"My Portal",
+        "version":"1.0.0",
+        "description":"A customizable, responsive, and accessible web portal."
+    }
+}
