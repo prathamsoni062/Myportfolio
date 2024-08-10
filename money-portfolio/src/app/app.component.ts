@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { LanguageService } from './shared/services/language/language.service';
+import { LanguageCodeEnum } from './shared/enums/language.enum';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'money-portfolio';
+
+  constructor(private languageService:LanguageService){
+    this.initializeAppLanguage();
+  }
+
+  initializeAppLanguage(){
+    const lang = LanguageCodeEnum.ENGLISH;
+    const langStr = lang ? lang : LanguageCodeEnum.ENGLISH;
+    this.languageService.initLanguageService(langStr);
+  }
 }
