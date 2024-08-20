@@ -12,16 +12,20 @@
 
 .custom-toolbar {
     background:rgba(0, 0, 0, 0.1);
+    z-index: 1000;
 }
 
-
+.content {
+    margin-top: 64px; /* Adjust based on the height of your toolbar */
+    padding: 20px;
+  }
 .nav-button:last-child {
     margin-right: 0;
     /* Remove margin from the last button */
 }
 
 .nav-button {
-    color: black;
+    color: black !important;
     background-color: transparent !important;
     /* No background */
     box-shadow: none !important;
@@ -38,11 +42,16 @@
 }
 
 .bold-text {
-    color: rgb(66, 66, 66);
+    color: black;
     font-weight: bold; /* Make text bold */
   }
 
   .profile-icon {
-    margin-left: 15px; /* Space before profile icon */
-    color: white; /* Change color if needed */
+    // margin-left: 15px; /* Space before profile icon */
+    margin-right: 15px; /* Space before profile icon */
+    color: rgb(75, 73, 73); /* Change color if needed */
   }
+
+  .profile-icon:hover {
+    color: rgb(22, 19, 19); /* Change color on hover */
+}

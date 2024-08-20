@@ -11,13 +11,42 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { SharedModule } from './shared/shared.module';
-
-const components = [NavbarComponent, DashboardComponent];
+import { HomeComponent } from './mycomponents/home/home/home.component';
+import { InvestmentComponent } from './mycomponents/investment/investment/investment.component';
+import { ExpensesComponent } from './mycomponents/expenses/expenses/expenses.component';
+import { ReportComponent } from './mycomponents/report/report/report.component';
+import { GoalComponent } from './mycomponents/goal/goal/goal.component';
+import { ContactComponent } from './mycomponents/contact/contact/contact.component';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { LoginComponent } from './mycomponents/login/login/login.component';
+export function HttpLoaderFactory(http: HttpClient):TranslateHttpLoader {
+  return new TranslateHttpLoader(http);
+}
+const components = [
+  NavbarComponent,
+  DashboardComponent,
+  HomeComponent,
+  ExpensesComponent,
+  InvestmentComponent,
+  ReportComponent,
+  GoalComponent,
+  ContactComponent,
+];
 @NgModule({
-  declarations: [AppComponent, ...components],
+  declarations: [AppComponent, ...components, LoginComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
     BrowserAnimationsModule,
     SharedModule,
     MatToolbarModule,
