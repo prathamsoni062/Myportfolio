@@ -8,6 +8,7 @@ import { ContactComponent } from './mycomponents/contact/contact/contact.compone
 import { InvestmentComponent } from './mycomponents/investment/investment/investment.component';
 import { ExpensesComponent } from './mycomponents/expenses/expenses/expenses.component';
 import { LoginComponent } from './mycomponents/login/login/login.component';
+import { SignUpComponent } from './mycomponents/signUp/sign-up/sign-up.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'report', component: ReportComponent },
   { path: 'goal', component: GoalComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignUpComponent },
   // Add other routes here
 ];
 @NgModule({

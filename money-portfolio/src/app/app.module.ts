@@ -21,6 +21,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { LoginComponent } from './mycomponents/login/login/login.component';
+import { SignUpComponent } from './mycomponents/signUp/sign-up/sign-up.component';
 export function HttpLoaderFactory(http: HttpClient):TranslateHttpLoader {
   return new TranslateHttpLoader(http);
 }
@@ -35,7 +36,7 @@ const components = [
   ContactComponent,
 ];
 @NgModule({
-  declarations: [AppComponent, ...components, LoginComponent],
+  declarations: [AppComponent, ...components, LoginComponent, SignUpComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

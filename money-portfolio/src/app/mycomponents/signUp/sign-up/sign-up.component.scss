@@ -1,4 +1,4 @@
-.login-container {
+.signup-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -7,7 +7,7 @@
     margin: 0;
 }
 
-.login-card {
+.signup-card {
     display: flex;
     width: 800px;
     background-color: #fff;
@@ -15,40 +15,31 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.login-content {
+.signup-content {
     padding: 40px;
     width: 50%;
     text-align: center;
     border-right: 1px solid #e0e0e0;
 }
 
-.signup-container {
-    padding: 40px;
-    width: 50%;
-    background: linear-gradient(135deg, #20bf55, #01baef);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 0 10px 10px 0;
+.signup-header {
+    margin-bottom: 20px;
 }
 
-.login-logo {
+.signup-logo {
     width: 50px;
     height: 50px;
     margin-bottom: 20px;
-    border-radius: 31px;
 }
 
-.social-login button {
+.social-signup button {
     margin: 5px;
     background-color: white;
     color: #757575;
     border: 1px solid #e0e0e0;
 }
 
-.social-login button mat-icon {
+.social-signup button mat-icon {
     font-size: 20px;
 }
 
@@ -62,13 +53,25 @@ button[mat-raised-button] {
     padding: 10px;
 }
 
-.signup-container h3 {
+.login-container {
+    padding: 40px;
+    width: 50%;
+    background: linear-gradient(135deg, #20bf55, #01baef);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0 10px 10px 0;
+}
+
+.login-container h3 {
     margin-bottom: 15px;
     font-size: 24px;
     font-weight: bold;
 }
 
-.signup-container p {
+.login-container p {
     margin-bottom: 30px;
     text-align: center;
 }

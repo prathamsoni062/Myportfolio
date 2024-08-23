@@ -1,0 +1,12 @@
+{
+  "users": [
+    {
+      "id": "b6ee",
+      "fullName": "nitin",
+      "email": "nitin@gmail.com",
+      "mobile": "9407505792",
+      "password": "Nitin@123",
+      "confirmPassword": "Nitin@123"
+    }
+  ]
+}

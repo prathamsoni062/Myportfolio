@@ -9,6 +9,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
 import { AngularMaterialModule } from '../agular-material/angular-material.module';
+import { InputComponent } from './components/generic-input/input/input.component';
 
 const components = [
 
@@ -26,7 +27,7 @@ const pipes = [
 
 ] as const;
 @NgModule({
-  declarations: [...components,...directives,...pipes],
+  declarations: [...components,...directives,...pipes, InputComponent],
   imports: [
     BrowserModule,
     TranslateModule,
