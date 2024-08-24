@@ -1,0 +1,11 @@
+<button
+  mat-raised-button
+  [color]="color"
+  [disabled]="disabled"
+  [attr.type]="type"
+  [class.full-width]="fullWidth"
+  (click)="handleClick()"
+>
+  <mat-icon *ngIf="icon">{{ icon }}</mat-icon>
+  {{ label }}
+</button>

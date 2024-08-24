@@ -9,9 +9,14 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
 import { AngularMaterialModule } from '../agular-material/angular-material.module';
+import { InputComponent } from './components/generic-input/input/input.component';
+import { BtnComponent } from './components/generic-btn/btn/btn.component';
+
 
 const components = [
-
+  InputComponent, 
+  BtnComponent 
+  
 ] as const;
 
 const directives = [

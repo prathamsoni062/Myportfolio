@@ -1,0 +1,76 @@
+<div class="signup-container">
+  <div class="signup-card">
+    <div class="signup-content">
+      <div class="signup-header">
+        <img src="assets/images/website_logo.png" alt="Logo" class="signup-logo" />
+        <h2>Create Your Account</h2>
+        <p>Sign up using social networks</p>
+        <div class="social-signup">
+          <!-- Social Signup Buttons using app-btn -->
+          <app-btn icon="facebook" color="primary" (onClick)="signUpWithFacebook()"></app-btn>
+          <app-btn icon="google" color="accent" (onClick)="signUpWithGoogle()"></app-btn>
+          <app-btn icon="linkedin" color="primary" (onClick)="signUpWithLinkedIn()"></app-btn>
+        </div>
+        <p>OR</p>
+      </div>
+      
+      <!-- Full Name Input using app-input -->
+      <app-input 
+        label="Full Name" 
+        placeholder="Full Name" 
+        [(value)]="user.fullName"
+      ></app-input>
+      
+      <!-- Email Input using app-input -->
+      <app-input 
+        label="Email" 
+        placeholder="Email" 
+        [(value)]="user.email"
+      ></app-input>
+      
+      <!-- Mobile Number Input using app-input -->
+      <app-input 
+        label="Mobile Number" 
+        type="tel" 
+        placeholder="Mobile Number" 
+        [(value)]="user.mobile"
+      ></app-input>
+      
+      <!-- Password Input using app-input -->
+      <app-input 
+        label="Password" 
+        type="password" 
+        placeholder="Password" 
+        [(value)]="user.password"
+      ></app-input>
+      
+      <!-- Confirm Password Input using app-input -->
+      <app-input 
+        label="Confirm Password" 
+        type="password" 
+        placeholder="Confirm Password" 
+        [(value)]="user.confirmPassword"
+      ></app-input>
+      
+      <!-- Sign Up Button using app-btn -->
+      <app-btn 
+        label="Sign Up" 
+        color="primary" 
+        [fullWidth]="true" 
+        (onClick)="onSignUp()"
+      ></app-btn>
+    </div>
+    
+    <div class="login-container">
+      <h3>Already Have an Account?</h3>
+      <p>Login to access your account and explore new opportunities!</p>
+      <!-- Login Button using app-btn -->
+      <app-btn 
+        label="Login" 
+        color="accent" 
+        [fullWidth]="true" 
+        routerLink="/login"
+      ></app-btn>
+    </div>
+  </div>
+</div>

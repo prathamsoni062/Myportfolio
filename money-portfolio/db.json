@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "id": "b6ee",
+      "fullName": "nitin",
+      "email": "nitin@gmail.com",
+      "mobile": "9407505792",
+      "password": "Nitin@123",
+      "confirmPassword": "Nitin@123"
+    },
+    {
+      "id": "a2cd",
+      "fullName": "Pratham Soni",
+      "email": "prathamsoni62@gmail.com",
+      "mobile": "9407505792",
+      "password": "Pratham@123",
+      "confirmPassword": ""
+    },
+    {
+      "id": "9f1f",
+      "fullName": "",
+      "email": "",
+      "mobile": "",
+      "password": "",
+      "confirmPassword": ""
+    }
+  ]
+}
