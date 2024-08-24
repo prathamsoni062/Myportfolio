@@ -34,9 +34,11 @@ const components = [
   ReportComponent,
   GoalComponent,
   ContactComponent,
+  SignUpComponent,
+  LoginComponent
 ];
 @NgModule({
-  declarations: [AppComponent, ...components, LoginComponent, SignUpComponent],
+  declarations: [AppComponent, ...components],
   imports: [
     BrowserModule,
     AppRoutingModule,

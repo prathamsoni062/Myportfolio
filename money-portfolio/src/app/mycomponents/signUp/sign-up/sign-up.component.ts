@@ -18,6 +18,17 @@ export class SignUpComponent {
 
   constructor(private userService: UserService) { }
 
+  signUpWithFacebook(){
+
+  }
+
+  signUpWithGoogle(){
+
+  }
+
+  signUpWithLinkedIn(){
+    
+  }
   onSignUp() {
     // You might want to add validation before sending the request
     this.userService.signUp(this.user).subscribe(

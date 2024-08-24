@@ -6,53 +6,71 @@
         <h2>Create Your Account</h2>
         <p>Sign up using social networks</p>
         <div class="social-signup">
-          <button mat-icon-button color="primary">
-            <mat-icon>facebook</mat-icon>
-          </button>
-          <button mat-icon-button color="accent">
-            <mat-icon>google</mat-icon>
-          </button>
-          <button mat-icon-button color="primary">
-            <mat-icon>linkedin</mat-icon>
-          </button>
+          <!-- Social Signup Buttons using app-btn -->
+          <app-btn icon="facebook" color="primary" (onClick)="signUpWithFacebook()"></app-btn>
+          <app-btn icon="google" color="accent" (onClick)="signUpWithGoogle()"></app-btn>
+          <app-btn icon="linkedin" color="primary" (onClick)="signUpWithLinkedIn()"></app-btn>
         </div>
         <p>OR</p>
       </div>
       
-      <mat-form-field class="full-width">
-        <mat-label>Full Name</mat-label>
-        <input matInput placeholder="Full Name" [(ngModel)]="user.fullName" name="fullName" />
-      </mat-form-field>
+      <!-- Full Name Input using app-input -->
+      <app-input 
+        label="Full Name" 
+        placeholder="Full Name" 
+        [(value)]="user.fullName"
+      ></app-input>
       
-      <mat-form-field class="full-width">
-        <mat-label>Email</mat-label>
-        <input matInput placeholder="Email" [(ngModel)]="user.email" name="email" />
-      </mat-form-field>
+      <!-- Email Input using app-input -->
+      <app-input 
+        label="Email" 
+        placeholder="Email" 
+        [(value)]="user.email"
+      ></app-input>
       
-      <mat-form-field class="full-width">
-        <mat-label>Mobile Number</mat-label>
-        <input matInput type="tel" placeholder="Mobile Number" [(ngModel)]="user.mobile" name="mobile" />
-      </mat-form-field>
+      <!-- Mobile Number Input using app-input -->
+      <app-input 
+        label="Mobile Number" 
+        type="tel" 
+        placeholder="Mobile Number" 
+        [(value)]="user.mobile"
+      ></app-input>
       
-      <mat-form-field class="full-width">
-        <mat-label>Password</mat-label>
-        <input matInput type="password" placeholder="Password" [(ngModel)]="user.password" name="password" />
-      </mat-form-field>
+      <!-- Password Input using app-input -->
+      <app-input 
+        label="Password" 
+        type="password" 
+        placeholder="Password" 
+        [(value)]="user.password"
+      ></app-input>
       
-      <mat-form-field class="full-width">
-        <mat-label>Confirm Password</mat-label>
-        <input matInput type="password" placeholder="Confirm Password" [(ngModel)]="user.confirmPassword" name="confirmPassword" />
-      </mat-form-field>
+      <!-- Confirm Password Input using app-input -->
+      <app-input 
+        label="Confirm Password" 
+        type="password" 
+        placeholder="Confirm Password" 
+        [(value)]="user.confirmPassword"
+      ></app-input>
       
-      <button mat-raised-button color="primary" class="full-width" (click)="onSignUp()">
-        Sign Up
-      </button>
+      <!-- Sign Up Button using app-btn -->
+      <app-btn 
+        label="Sign Up" 
+        color="primary" 
+        [fullWidth]="true" 
+        (onClick)="onSignUp()"
+      ></app-btn>
     </div>
     
     <div class="login-container">
       <h3>Already Have an Account?</h3>
       <p>Login to access your account and explore new opportunities!</p>
-      <button mat-raised-button color="accent" routerLink="/login">Login</button>
+      <!-- Login Button using app-btn -->
+      <app-btn 
+        label="Login" 
+        color="accent" 
+        [fullWidth]="true" 
+        routerLink="/login"
+      ></app-btn>
     </div>
   </div>
 </div>

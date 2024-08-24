@@ -18,22 +18,30 @@
         </div>
         <p>OR</p>
       </div>
-      <mat-form-field class="full-width">
-        <mat-label>Email</mat-label>
-        <input matInput placeholder="Email" />
-      </mat-form-field>
-      <mat-form-field class="full-width">
-        <mat-label>Password</mat-label>
-        <input matInput type="password" placeholder="Password" />
-      </mat-form-field>
-      <button mat-raised-button color="primary" class="full-width">
+
+      <!-- Email Input -->
+      <app-input 
+        label="Email" 
+        placeholder="Email" 
+        [(value)]="user.email"
+      ></app-input>
+
+      <!-- Password Input -->
+      <app-input 
+        label="Password" 
+        type="password" 
+        placeholder="Password" 
+        [(value)]="user.password"
+      ></app-input>
+
+      <button mat-raised-button color="primary" class="full-width" (click)="onSignIn()">
         Sign In
       </button>
     </div>
     <div class="signup-container">
       <h3>New Here?</h3>
       <p>Sign up and discover a great amount of new opportunities!</p>
-      <button mat-raised-button color="accent">Sign Up</button>
+      <button mat-raised-button color="accent" routerLink="/signup">Sign Up</button>
     </div>
   </div>
 </div>

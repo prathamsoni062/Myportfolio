@@ -14,4 +14,8 @@ export class UserService {
     return this.http.post<any>(this.apiUrl, user);
   }
 
+  logIn(user:any):Observable<any>{
+    return this.http.get<any>(this.apiUrl, user);
+  }
+
 }
