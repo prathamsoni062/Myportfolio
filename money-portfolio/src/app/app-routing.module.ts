@@ -9,10 +9,11 @@ import { InvestmentComponent } from './mycomponents/investment/investment/invest
 import { ExpensesComponent } from './mycomponents/expenses/expenses/expenses.component';
 import { LoginComponent } from './mycomponents/login/login/login.component';
 import { SignUpComponent } from './mycomponents/signUp/sign-up/sign-up.component';
+import { navbarGuard } from './navbar.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'home', component: HomeComponent },
+  { path: 'home', component: HomeComponent ,canActivate: [navbarGuard]},
   { path: 'dashboard', component: DashboardComponent },
   { path: 'services', component: InvestmentComponent },
   { path: 'expenses', component: ExpensesComponent },
@@ -21,6 +22,8 @@ const routes: Routes = [
   { path: 'goal', component: GoalComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignUpComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full' }, // Default route
+  { path: '**', redirectTo: '/home' } // Wildcard route for invalid paths
   // Add other routes here
 ];
 @NgModule({

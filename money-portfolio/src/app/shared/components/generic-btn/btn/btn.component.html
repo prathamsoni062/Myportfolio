@@ -7,5 +7,5 @@
   (click)="handleClick()"
 >
   <mat-icon *ngIf="icon">{{ icon }}</mat-icon>
-  {{ label }}
+  <span *ngIf="label">{{ label }}</span>
 </button>
