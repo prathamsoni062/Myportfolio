@@ -23,7 +23,7 @@ import {
 import { MatDividerModule } from '@angular/material/divider';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
+import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
@@ -43,6 +43,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { DomSanitizer } from '@angular/platform-browser';
+import CustomIconSet from '../shared/config/custom-svg-icon.config';
 
 @NgModule({
   declarations: [],
@@ -105,4 +107,18 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     },
   ],
 })
-export class AngularMaterialModule {}
+export class AngularMaterialModule {
+  constructor(public matIconRegistry: MatIconRegistry,private domSanitizer: DomSanitizer){
+    Object.keys(CustomIconSet).forEach(
+    (icon) =>{
+      const iconUrl = CustomIconSet[icon].iconUrl;
+      if(iconUrl && iconUrl.startsWith('assets/icons/') && iconUrl.endsWith('.svg')){
+        this.matIconRegistry.addSvgIcon(
+          icon,
+        this.domSanitizer.bypassSecurityTrustResourceUrl(iconUrl));
+      }
+
+    }   
+    )
+  }
+}

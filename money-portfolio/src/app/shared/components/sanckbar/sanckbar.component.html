@@ -1,0 +1,12 @@
+<div class="toaster-container d-flex align-items-center justify-content-between">
+    <div class="d-flex align-items-center">
+      <mat-icon class="toaster-icon" [svgIcon]="iconName"></mat-icon>
+      <div class="toaster-label" [title]="snackBarData?.message ? (snackBarData.message | translate) : ''">
+        {{ snackBarData?.message ? (snackBarData.message | translate) : '' }}
+      </div>
+    </div>
+    <button role="button" (click)="closeSnackbar()" class="toaster-close">
+      <mat-icon class="toaster-close-icon" svgIcon="close_Icon"></mat-icon>
+    </button>
+  </div>
+  

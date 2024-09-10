@@ -11,11 +11,12 @@ import { TranslateModule } from '@ngx-translate/core';
 import { AngularMaterialModule } from '../agular-material/angular-material.module';
 import { InputComponent } from './components/generic-input/input/input.component';
 import { BtnComponent } from './components/generic-btn/btn/btn.component';
+import { SanckbarComponent } from './components/sanckbar/sanckbar.component';
 
 
 const components = [
   InputComponent, 
-  BtnComponent 
+  BtnComponent,
   
 ] as const;
 
@@ -31,7 +32,7 @@ const pipes = [
 
 ] as const;
 @NgModule({
-  declarations: [...components,...directives,...pipes],
+  declarations: [...components,...directives,...pipes, SanckbarComponent],
   imports: [
     BrowserModule,
     TranslateModule,

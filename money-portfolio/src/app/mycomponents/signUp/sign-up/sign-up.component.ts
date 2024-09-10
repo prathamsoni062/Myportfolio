@@ -16,7 +16,9 @@ export class SignUpComponent {
     confirmPassword: ''
   };
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,
+    // private sanckbar: SanckbarComponent
+  ) { }
 
   signUpWithFacebook(){
 
@@ -34,6 +36,7 @@ export class SignUpComponent {
     this.userService.signUp(this.user).subscribe(
       (response) => {
         console.log('User signed up successfully', response);
+        // this.sanckbar.openSnackBar('Your signup is successful', 'Close');
         // Handle success (e.g., navigate to login, show a message, etc.)
       },
       (error) => {

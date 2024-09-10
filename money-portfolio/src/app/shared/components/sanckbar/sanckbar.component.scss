@@ -1,0 +1,105 @@
+.toaster-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  // background-color: rgb(205, 21, 21); // Set background color explicitly
+  padding: 1rem; // Optional padding for better spacing
+  // border-radius: 0.25rem; // Optional: for rounded corners
+  // box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1); // Optional: light shadow for elevation
+
+  .d-flex {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+  }
+
+  .toaster-icon {
+    // color: aqua;
+    font-size: 14px;
+    margin-right: 6px;
+    flex-shrink: 0;
+    height: 1.8rem;
+  }
+
+  .toaster-label {
+    flex-grow: 1;
+    max-width: calc(100% - 8rem);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    // overflow: hidden;
+    // color: black; // Adjust text color as needed
+    margin: 0; // Ensure no additional margins
+    padding: 0; // Ensure no additional padding
+  }
+
+  .toaster-close {
+    height: 2rem;
+    width: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent; // Ensure button background is transparent
+    border-radius: 50%;
+    border: none;
+    flex-shrink: 0;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    transition: all 0.2s ease;
+
+    .toaster-close-icon {
+      width: 1.5rem;
+      height: 1.5rem;
+      color: var(--dark-font);
+    }
+
+    &:hover {
+      background-color: rgba(129, 125, 125, 0.05); // Light hover background
+      transition: all 0.2s ease;
+    }
+  }
+}
+
+// Example classes for snackbar types
+// .success-snackbar {
+//   background-color: #e0f7fa; // Light teal for success
+// }
+
+// .error-snackbar {
+//   background-color: #ffebee; // Light red for error
+// }
+
+// .warning-snackbar {
+//   background-color: #fff8e1; // Light yellow for warning
+// }
+
+// .pending-snackbar {
+//   background-color: #e3f2fd; // Light blue for pending
+// }
+
+@media only screen and (min-width: 1920px) {
+  .toaster-container .toaster-icon {
+    margin-right: 1rem;
+  }
+}
+
+
+// .mdc-snackbar__label {
+//      padding-left: 0px !important; 
+//      padding-right: 0px !important; 
+//      width: 100%; 
+//     flex-grow: 1;
+//      box-sizing: border-box; 
+//     margin: 0;
+//     visibility: hidden;
+//      padding-top: 0px !important; 
+//      padding-bottom: 0px !important; 
+// }
+
+// .toaster-container .mdc-snackbar__surface {
+//     background-color: transparent !important; // Remove the background color
+//     box-shadow: none !important; // Remove any box shadow
+//     border: none !important; // Remove border if present
+//   }
+   
+

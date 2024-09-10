@@ -23,6 +23,22 @@
       "mobile": "",
       "password": "",
       "confirmPassword": ""
+    },
+    {
+      "id": "177f",
+      "fullName": "Ritik",
+      "email": "r@email.com",
+      "mobile": "11233456666",
+      "password": "R1234@",
+      "confirmPassword": "r1234@"
+    },
+    {
+      "id": "a4ad",
+      "fullName": "Ritik",
+      "email": "r@email.com",
+      "mobile": "11233456666",
+      "password": "R1234@",
+      "confirmPassword": "r1234@"
     }
   ]
 }
