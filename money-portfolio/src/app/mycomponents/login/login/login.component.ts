@@ -25,22 +25,23 @@ export class LoginComponent {
       (res) => {
         if (res.length > 0) {
           const token = res[0].token || 'some-token'; // Adjust based on your actual response structure
-          sessionStorage.setItem('authToken', token); 
+          sessionStorage.setItem('authToken', token);
           setTimeout(() => {
             this.router.navigate(['/home']);
           }, 100);
-          this.sanckbar.openSnackBar('Login successful',snackBarType.SUCCESS );
+          this.sanckbar.openSnackBar('Login successful', snackBarType.SUCCESS);
         } else {
-          console.error("Log in failed: Invalid credentials");
+          console.error('Log in failed: Invalid credentials');
           this.sanckbar.openSnackBar('Invalid credentials', snackBarType.ERROR);
         }
       },
       (err) => {
-        console.error("Log in failed", err);
-        this.sanckbar.openSnackBar('Error occurred during login', snackBarType.ERROR);  
+        console.error('Log in failed', err);
+        this.sanckbar.openSnackBar(
+          'Error occurred during login',
+          snackBarType.ERROR
+        );
       }
     );
   }
-  
-  
 }
