@@ -24,6 +24,7 @@ export class LoginComponent {
     this.userService.logIn(this.user).subscribe(
       (res) => {
         if (res.length > 0) {
+          console.log("User LogIn successfully", res[0]);
           const token = res[0].token || 'some-token'; // Adjust based on your actual response structure
           sessionStorage.setItem('authToken', token); 
           setTimeout(() => {
