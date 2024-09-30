@@ -9,9 +9,9 @@ import { UserService } from 'src/app/user.service';
 export class SignUpComponent {
 
   user = {
-    fullName: '',
+    username: '',
     email: '',
-    mobile: '',
+    mobileNo: '',
     password: '',
     confirmPassword: ''
   };
