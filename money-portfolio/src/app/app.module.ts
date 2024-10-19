@@ -12,7 +12,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { SharedModule } from './shared/shared.module';
 import { HomeComponent } from './mycomponents/home/home/home.component';
-import { InvestmentComponent } from './mycomponents/investment/investment/investment.component';
+import { InvestmentComponent } from './mycomponents/investment/components/investment/investment.component';
 import { ExpensesComponent } from './mycomponents/expenses/expenses/expenses.component';
 import { ReportComponent } from './mycomponents/report/report/report.component';
 import { GoalComponent } from './mycomponents/goal/goal/goal.component';
@@ -22,6 +22,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { LoginComponent } from './mycomponents/login/login/login.component';
 import { SignUpComponent } from './mycomponents/signUp/sign-up/sign-up.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { InvestmentPopupComponent } from './mycomponents/investment/components/investment-popup/investment-popup.component';
+
 export function HttpLoaderFactory(http: HttpClient):TranslateHttpLoader {
   return new TranslateHttpLoader(http);
 }
@@ -35,12 +38,13 @@ const components = [
   GoalComponent,
   ContactComponent,
   SignUpComponent,
-  LoginComponent
+  LoginComponent,
 ];
 @NgModule({
-  declarations: [AppComponent, ...components],
+  declarations: [AppComponent, ...components, InvestmentPopupComponent],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
     TranslateModule.forRoot({

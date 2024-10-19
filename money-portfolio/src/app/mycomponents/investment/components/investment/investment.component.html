@@ -1,0 +1,35 @@
+<form [formGroup]="investmentForm">
+    <div class="row">
+      <div class="col-12 col-sm-6 col-md-4">
+        <app-generic-card
+          title="Card Title"
+          formControlName="amount1"
+          [subtitle]="investmentForm.get('amount1')?.value || ''">
+        </app-generic-card>
+      </div>
+      <div class="col-12 col-sm-6 col-md-4">
+        <app-generic-card
+          title="Card Title"
+          formControlName="amount2"
+          [subtitle]="investmentForm.get('amount2')?.value || ''">
+        </app-generic-card>
+      </div>
+      <div class="col-12 col-sm-6 col-md-4">
+        <app-generic-card
+          title="Card Title"
+          formControlName="amount3"
+          [subtitle]="investmentForm.get('amount3')?.value || ''">
+        </app-generic-card>
+      </div>
+    </div>
+
+    <div>
+      <app-btn [label]="btnLabel"></app-btn>
+    </div>
+    
+    <div class="row mt-4">
+      <div class="col-12">
+        <app-generic-table [data]="users" [columns]="columns"></app-generic-table>
+      </div>
+    </div>
+  </form>
