@@ -1,0 +1,14 @@
+mat-card {
+  margin: 6px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%; /* Make the card take the full width of its container */
+  // max-width: 400px; /* Maximum width at larger screens */
+}
+
+/* Optional: media query for small screens */
+@media (max-width: 768px) {
+mat-card {
+  max-width: 100%; /* Allow full-width cards on smaller screens */
+}
+}
