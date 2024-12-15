@@ -5,7 +5,7 @@ import { HomeComponent } from './mycomponents/home/home/home.component';
 import { GoalComponent } from './mycomponents/goal/goal/goal.component';
 import { ReportComponent } from './mycomponents/report/report/report.component';
 import { ContactComponent } from './mycomponents/contact/contact/contact.component';
-import { InvestmentComponent } from './mycomponents/investment/investment/investment.component';
+import { InvestmentComponent } from './mycomponents/investment/components/investment/investment.component';
 import { ExpensesComponent } from './mycomponents/expenses/expenses/expenses.component';
 import { LoginComponent } from './mycomponents/login/login/login.component';
 import { SignUpComponent } from './mycomponents/signUp/sign-up/sign-up.component';

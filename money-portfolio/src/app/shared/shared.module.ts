@@ -12,12 +12,18 @@ import { AngularMaterialModule } from '../agular-material/angular-material.modul
 import { InputComponent } from './components/generic-input/input/input.component';
 import { BtnComponent } from './components/generic-btn/btn/btn.component';
 import { SanckbarComponent } from './components/sanckbar/sanckbar.component';
-
+import { GenericCardComponent } from './components/generic-card/generic-card.component';
+import { GenericTableComponent } from './components/generic-table/generic-table.component';
+import { GenericPieChartComponent } from './components/generic-pie-chart/generic-pie-chart.component';
 
 const components = [
-  InputComponent, 
+  InputComponent,
   BtnComponent,
-  
+  SanckbarComponent,
+  GenericCardComponent,
+  GenericTableComponent,
+  GenericPieChartComponent
+
 ] as const;
 
 const directives = [
@@ -32,7 +38,7 @@ const pipes = [
 
 ] as const;
 @NgModule({
-  declarations: [...components,...directives,...pipes, SanckbarComponent],
+  declarations: [...components, ...directives, ...pipes, ],
   imports: [
     BrowserModule,
     TranslateModule,
@@ -44,7 +50,7 @@ const pipes = [
     MatIconModule,
   ],
   providers: [...services],
-  exports: [ 
+  exports: [
     ...components,
     ...directives,
     ...pipes,
@@ -53,4 +59,4 @@ const pipes = [
 
   ]
 })
-export class SharedModule {}
+export class SharedModule { }
