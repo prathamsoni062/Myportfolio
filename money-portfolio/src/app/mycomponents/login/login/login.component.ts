@@ -21,7 +21,8 @@ export class LoginComponent {
   };
 
   onSignIn() {
-    this.userService.logIn(this.user).subscribe(
+    console.log('User Credentials:', this.user);
+    this.userService.logIn( this.user ).subscribe(
       (res) => {
         console.log(res, 'user');
         
