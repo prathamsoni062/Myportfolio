@@ -1,1 +1,40 @@
-<p>expenses works!</p>
+<form [formGroup]="expensesForm">
+  <div class="heading-text">Expenses Summary</div>
+  <div class="row">
+    <div class="col-12 col-sm-6 col-md-4 ps-1">
+      <app-generic-card
+        title="Card Title"
+        formControlName="amount1"
+        [subtitle]="expensesForm.get('amount1')?.value || ''"
+      >
+      </app-generic-card>
+    </div>
+    <div class="col-12 col-sm-6 col-md-4">
+      <app-generic-card
+        title="Card Title"
+        formControlName="amount2"
+        [subtitle]="expensesForm.get('amount2')?.value || ''"
+      >
+      </app-generic-card>
+    </div>
+    <div class="col-12 col-sm-6 col-md-4 pe-3">
+      <app-generic-card
+        title="Card Title"
+        formControlName="amount3"
+        [subtitle]="expensesForm.get('amount3')?.value || ''"
+      >
+      </app-generic-card>
+    </div>
+  </div>
+
+  <div class="expenses-header mt-3">
+    <div class="heading-text">Expenses Details</div>
+    <app-btn [label]="btnLabel"></app-btn>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <app-generic-table [data]="users" [columns]="columns"></app-generic-table>
+    </div>
+  </div>
+</form>

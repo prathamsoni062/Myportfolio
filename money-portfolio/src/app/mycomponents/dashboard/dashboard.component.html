@@ -1,53 +1,61 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-12 col-sm-6 col-md-3">
-      <app-generic-card title="Card Title" subtitle="${{amount}}" actionButtonLabel="Click Me">
-        <!-- <p>This is the content of the card. You can put any HTML here.</p> -->
-      </app-generic-card>
-    </div>
-    <div class="col-12 col-sm-6 col-md-3">
-      <app-generic-card title="Another Card" subtitle="Another Subtitle">
-        <p>Some different content for another card.</p>
-      </app-generic-card>
-    </div>
-    <div class="col-12 col-sm-6 col-md-3">
-      <app-generic-card title="Card 3" subtitle="Subtitle 3">
-        <p>This is the content of Card 3.</p>
-      </app-generic-card>
-    </div>
-    <div class="col-12 col-sm-6 col-md-3">
-      <app-generic-card title="Card 4" subtitle="Subtitle 4">
-        <p>This is the content of Card 4.</p>
-      </app-generic-card>
-    </div>
-    <!-- Pie Chart inside a Card -->
-
+<div class="heading-text">Dashboard Overview</div>
+<div class="row">
+  <div class="col-12 col-sm-6 col-md-3 ps-0">
+    <app-generic-card title="Total Portfolio Value" subtitle="${{ amount }}">
+      <!-- actionButtonLabel="Click Me" -->
+      <!-- <p>This is the content of the card. You can put any HTML here.</p> -->
+    </app-generic-card>
   </div>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-6 mt-4">
-        <app-generic-card title="Pie Chart" subtitle="Chart Subtitle">
-          <app-generic-pie-chart [label]="['Red', 'Blue', 'Yellow']" [data]="[300, 50, 100]"
-            [backgroundColor]="['rgb(255, 99, 132)', 'rgb(54, 162, 235)', 'rgb(255, 205, 86)']" [type]="'pie'">
-          </app-generic-pie-chart>
-
-        </app-generic-card>
-      </div>
-      <div class="col-6 mt-4">
-        <app-generic-card title="Line Chart" subtitle="Chart Subtitle">
-          <app-generic-pie-chart [type]="'line'" [label]="['January', 'February', 'March', 'April']"
-            [lineChartData]="[65, 59, 80, 81]">
-          </app-generic-pie-chart>
-        </app-generic-card>
-      </div>
-    </div>
+  <div class="col-12 col-sm-6 col-md-3">
+    <app-generic-card title="Investments" subtitle="${{ amount }}">
+      <!-- <p>Some different content for another card.</p> -->
+    </app-generic-card>
   </div>
+  <div class="col-12 col-sm-6 col-md-3">
+    <app-generic-card title="Expenses" subtitle="${{ amount }}">
+      <!-- <p>This is the content of Card 3.</p> -->
+    </app-generic-card>
+  </div>
+  <div class="col-12 col-sm-6 col-md-3">
+    <app-generic-card title="Net Worth" subtitle="${{ amount }}">
+      <!-- <p>This is the content of Card 4.</p> -->
+    </app-generic-card>
+  </div>
+  <!-- Pie Chart inside a Card -->
+</div>
 
+<div class="row">
+  <div class="col-6 mt-4 ps-0">
+    <app-generic-card title="Pie Chart" subtitle="Chart Subtitle">
+      <app-generic-pie-chart
+        [label]="['Red', 'Blue', 'Yellow']"
+        [data]="[300, 50, 100]"
+        [backgroundColor]="[
+          'rgb(255, 99, 132)',
+          'rgb(54, 162, 235)',
+          'rgb(255, 205, 86)'
+        ]"
+        [type]="'pie'"
+      >
+      </app-generic-pie-chart>
+    </app-generic-card>
+  </div>
+  <div class="col-6 mt-4">
+    <app-generic-card title="Line Chart" subtitle="Chart Subtitle">
+      <app-generic-pie-chart
+        [type]="'line'"
+        [label]="['January', 'February', 'March', 'April']"
+        [lineChartData]="[65, 59, 80, 81]"
+      >
+      </app-generic-pie-chart>
+    </app-generic-card>
+  </div>
+</div>
 
-  <!-- Table -->
-  <div class="row mt-4">
-    <div class="col-12">
-      <app-generic-table [data]="users" [columns]="columns"></app-generic-table>
-    </div>
+<!-- Table -->
+<div class="heading-text">Recent Activity</div>
+<div class="row mt-4">
+  <div class="col-12 ps-2 pe-2">
+    <app-generic-table [data]="users" [columns]="columns"></app-generic-table>
   </div>
 </div>
