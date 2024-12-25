@@ -1,6 +1,6 @@
 <form [formGroup]="investmentForm">
     <div class="row">
-      <div class="col-12 col-sm-6 col-md-4">
+      <div class="col-12 col-sm-6 col-md-4 ps-1">
         <app-generic-card
           title="Card Title"
           formControlName="amount1"
@@ -14,7 +14,7 @@
           [subtitle]="investmentForm.get('amount2')?.value || ''">
         </app-generic-card>
       </div>
-      <div class="col-12 col-sm-6 col-md-4">
+      <div class="col-12 col-sm-6 col-md-4 pe-3">
         <app-generic-card
           title="Card Title"
           formControlName="amount3"
@@ -23,11 +23,11 @@
       </div>
     </div>
 
-    <div>
+    <div class="mt-3">
       <app-btn [label]="btnLabel"></app-btn>
     </div>
     
-    <div class="row mt-4">
+    <div class="row">
       <div class="col-12">
         <app-generic-table [data]="users" [columns]="columns"></app-generic-table>
       </div>

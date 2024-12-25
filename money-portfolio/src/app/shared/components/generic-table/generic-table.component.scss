@@ -1,7 +1,9 @@
 table {
-    width: 100%;
+  width: 100%;
 }
 
 .mat-elevation-z8 {
-    margin: 20px 0;
+  margin: 20px 0;
+  border-radius: 10px;
+  overflow: hidden; /* Ensures the border radius is applied to the content inside */
 }
