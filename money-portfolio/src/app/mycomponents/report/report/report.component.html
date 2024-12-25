@@ -1,1 +1,84 @@
-<p>report works!</p>
+<div class="row">
+  <div class="col-6 mt-4 ps-0">
+    <app-generic-card title="Investment Distribution">
+      <app-generic-pie-chart
+        [label]="['Stock', 'Real State', 'Mutual fund', 'Bond']"
+        [data]="[30000, 500000, 100000, 235678]"
+        [backgroundColor]="[
+          'rgb(255, 99, 132)',
+          'rgb(54, 162, 235)',
+          'rgb(255, 205, 86)',
+          'rgb(0, 255, 0)'
+        ]"
+        [type]="'pie'"
+      >
+      </app-generic-pie-chart>
+    </app-generic-card>
+  </div>
+  <div class="col-6 mt-4">
+    <app-generic-card title="Portfolio Growth Over Time ">
+      <app-generic-pie-chart
+        [type]="'line'"
+        [label]="['2022-01-01', '2022-01-02', '2022-01-03', '2022-01-04']"
+        [lineChartData]="[6500, 25000, 27000, 33040]"
+      >
+      </app-generic-pie-chart>
+    </app-generic-card>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-6 mt-4 ps-0">
+    <app-generic-card title="Expense Breakdown">
+      <app-generic-pie-chart
+        [label]="['Transportation', 'Entertainment', 'Groceries', 'Rent']"
+        [data]="[1200, 600, 350, 2000]"
+        [backgroundColor]="[
+          'rgb(255, 99, 132)',
+          'rgb(54, 162, 235)',
+          'rgb(255, 205, 86)',
+          'rgb(0, 255, 0)'
+        ]"
+        [type]="'doughnut'"
+      >
+      </app-generic-pie-chart>
+    </app-generic-card>
+  </div>
+  <div class="col-6 mt-4">
+    <app-generic-card title="Income vs Expenses">
+      <app-generic-pie-chart
+        [type]="'bar'"
+        [barChartData]="[
+          { date: '2024-12-01', income: 3000, expenses: 2500 },
+          { date: '2024-12-02', income: 4000, expenses: 3000 },
+          { date: '2024-12-03', income: 2000, expenses: 1500 }
+        ]"
+      >
+      </app-generic-pie-chart>
+    </app-generic-card>
+  </div>
+</div>
+
+<!-- <div class="row">
+    <div class="col-6 mt-4 ps-0">
+        <app-generic-card title="Monthly Investment Breakdown">
+            <app-generic-pie-chart
+              [type]="'stackedBar'"
+              [stackedBarData]="[
+                { 'month': '2024-01', 'stocks': 10000, 'bonds': 5000, 'realEstate': 0, 'mutualFunds': 8000 },
+                { 'month': '2024-02', 'stocks': 12000, 'bonds': 3000, 'realEstate': 5000, 'mutualFunds': 7000 }
+              ]"
+            >
+            </app-generic-pie-chart>
+          </app-generic-card>
+    </div>
+    <div class="col-6 mt-4">
+
+    </div>
+</div> -->
+<div class="heading-text">Recent Activity</div>
+<div class="row mt-4">
+  <div class="col-12 ps-2 pe-2">
+    <app-generic-table [data]="users" [columns]="columns"></app-generic-table>
+  </div>
+</div>
