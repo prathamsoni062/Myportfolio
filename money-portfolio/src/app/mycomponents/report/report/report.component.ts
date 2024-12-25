@@ -6,6 +6,21 @@ import { Component } from '@angular/core';
   styleUrl: './report.component.scss'
 })
 export class ReportComponent {
+  
+    monthlyInvestmentData = [
+      { month: '2024-01', stocks: 10000, bonds: 5000, realEstate: 0, mutualFunds: 8000 },
+      { month: '2024-02', stocks: 12000, bonds: 3000, realEstate: 5000, mutualFunds: 7000 },
+      { month: '2024-03', stocks: 8000, bonds: 7000, realEstate: 2000, mutualFunds: 6000 },
+    ];
+  
+    roiComparisonData = [
+      { investmentType: 'Stocks', roi: 15.5 },
+      { investmentType: 'Bonds', roi: 5.2 },
+      { investmentType: 'Mutual Funds', roi: 12.0 },
+      { investmentType: 'Real Estate', roi: 20.3 },
+    ];
+  
+  
 
   users = [
     { InvestmentCategory: 'Stocks', InvestmentAmount: 50000, CurrentValue: 67500, ProfitLoss: 17500, ROI: '35%' },

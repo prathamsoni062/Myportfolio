@@ -14,7 +14,7 @@ export class GenericPieChartComponent implements OnInit, OnChanges, AfterViewIni
   @Input() backgroundColor: string[] = ['rgb(255, 99, 132)', 'rgb(54, 162, 235)', 'rgb(255, 205, 86)']; // Background colors
   @Input() type: string = ''; // Chart type ('pie', 'doughnut', 'line', 'bar')
   @Input() lineChartData: number[] = []; // Data for line chart
-  @Input() barChartData: { date: string; income: number; expenses: number }[] = []; // Data for bar chart
+  @Input() barChartData: { date: string; Investment: number; expenses: number }[] = []; // Data for bar chart
 
   @ViewChild('canvas', { static: true }) canvasRef!: ElementRef<HTMLCanvasElement>;
   chart: Chart | null = null;
@@ -78,7 +78,7 @@ export class GenericPieChartComponent implements OnInit, OnChanges, AfterViewIni
         datasets: [
           {
             label: 'Income',
-            data: this.barChartData.map(item => item.income),
+            data: this.barChartData.map(item => item.Investment),
             backgroundColor: 'rgba(75, 192, 192, 0.5)',
             borderColor: 'rgba(75, 192, 192, 1)',
             borderWidth: 1

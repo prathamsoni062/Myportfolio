@@ -15,14 +15,16 @@ import { SanckbarComponent } from './components/sanckbar/sanckbar.component';
 import { GenericCardComponent } from './components/generic-card/generic-card.component';
 import { GenericTableComponent } from './components/generic-table/generic-table.component';
 import { GenericPieChartComponent } from './components/generic-pie-chart/generic-pie-chart.component';
-
+import { StackedBarChartComponent } from './components/stacked-bar-chart/stacked-bar-chart.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
 const components = [
   InputComponent,
   BtnComponent,
   SanckbarComponent,
   GenericCardComponent,
   GenericTableComponent,
-  GenericPieChartComponent
+  GenericPieChartComponent,
+  StackedBarChartComponent
 
 ] as const;
 
@@ -48,6 +50,7 @@ const pipes = [
     MatSidenavModule,
     MatListModule,
     MatIconModule,
+    NgApexchartsModule
   ],
   providers: [...services],
   exports: [
