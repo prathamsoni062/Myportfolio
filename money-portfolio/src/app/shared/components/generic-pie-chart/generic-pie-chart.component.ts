@@ -11,7 +11,12 @@ Chart.register(...registerables);
 export class GenericPieChartComponent implements OnInit, OnChanges, AfterViewInit {
   @Input() label: string[] = ['Red', 'Blue', 'Yellow']; // Labels for the chart
   @Input() data: number[] = [300, 50, 100]; // Data for pie/doughnut charts
-  @Input() backgroundColor: string[] = ['rgb(255, 99, 132)', 'rgb(54, 162, 235)', 'rgb(255, 205, 86)']; // Background colors
+  @Input() backgroundColor: string[] = [ '#FF6384', 
+    '#36A2EB',
+    '#FFCE56',
+    '#4BC0C0', 
+    '#9966FF', 
+    '#FF9F40', ]; // Background colors
   @Input() type: string = ''; // Chart type ('pie', 'doughnut', 'line', 'bar')
   @Input() lineChartData: number[] = []; // Data for line chart
   @Input() barChartData: { date: string; Investment: number; expenses: number }[] = []; // Data for bar chart

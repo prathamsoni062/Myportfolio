@@ -18,12 +18,14 @@ import { ReportComponent } from './mycomponents/report/report/report.component';
 import { GoalComponent } from './mycomponents/goal/goal/goal.component';
 import { ContactComponent } from './mycomponents/contact/contact/contact.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { LoginComponent } from './mycomponents/login/login/login.component';
 import { SignUpComponent } from './mycomponents/signUp/sign-up/sign-up.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InvestmentPopupComponent } from './mycomponents/investment/components/investment-popup/investment-popup.component';
+import { customInterceptor } from './mycomponents/dashboard/services/custom.interceptor';
+import { AuthInterceptor } from './core/auth.interceptor';
 
 export function HttpLoaderFactory(http: HttpClient):TranslateHttpLoader {
   return new TranslateHttpLoader(http);
@@ -61,7 +63,12 @@ const components = [
     MatListModule,
     MatIconModule,
   ],
-  providers: [],
+  providers: [provideHttpClient(withInterceptors([customInterceptor])),
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true, // Ensures multiple interceptors can be applied
+  }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

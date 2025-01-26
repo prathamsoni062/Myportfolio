@@ -29,8 +29,45 @@ const apiUrlConfigs ={
         isRetryAllowed: false,
         useHttpCookies: false
     }),
-
-    
+    getDashboardData: new ApiConfigModel({
+        module: 'base',
+        pathTemplate: 'dashboard/getDashboardData',
+        method: "GET",
+        shouldUseStub: false,
+        stubPath: './api/dashboard.json',
+        handleSuccessInComponent: true,
+        handleErrorInComponent: true,
+        isBlocking: false,
+        isSilent: false,
+        isRetryAllowed: false,
+        useHttpCookies: false
+    }),
+    getExpenses: new ApiConfigModel({
+        module: 'base',
+        pathTemplate: 'expenses/getExpenses',
+        method: "GET",
+        shouldUseStub: false,
+        stubPath: './api/expenses.json',
+        handleSuccessInComponent: true,
+        handleErrorInComponent: true,
+        isBlocking: false,
+        isSilent: false,
+        isRetryAllowed: false,
+        useHttpCookies: false
+    }),
+    getInvestments: new ApiConfigModel({
+        module: 'base',
+        pathTemplate: 'investments/getInvestments',
+        method: "GET",
+        shouldUseStub: false,
+        stubPath: './api/investments.json',
+        handleSuccessInComponent: true,
+        handleErrorInComponent: true,
+        isBlocking: false,
+        isSilent: false,
+        isRetryAllowed: false,
+        useHttpCookies: false
+    })
 };
 
 export default apiUrlConfigs;

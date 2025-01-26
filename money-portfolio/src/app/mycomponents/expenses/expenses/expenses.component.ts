@@ -1,12 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { ExpensesService } from '../services/expenses.service';
 
 @Component({
   selector: 'app-expenses',
   templateUrl: './expenses.component.html',
   styleUrl: './expenses.component.scss'
 })
-export class ExpensesComponent {
+export class ExpensesComponent implements OnInit {
+  constructor(private expensesService:ExpensesService) { }
+
+  
 amount = "3000009";
   btnLabel = "Add Expenses";
   users = [
@@ -29,6 +33,11 @@ amount = "3000009";
   ngOnInit(): void {
     this.initiateForm();
     this.setAllData();
+    this.expensesService.getExpenses().subscribe(res => {
+      // this.users = data;
+      console.log(res);
+      
+    });
   }
 
   setAllData() {
