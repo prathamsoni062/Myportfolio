@@ -9,13 +9,15 @@ import { MatSort } from '@angular/material/sort';
   styleUrls: ['./generic-table.component.scss'],
 })
 export class GenericTableComponent<T> implements OnInit, OnChanges {
-  @Input() data: T[] = []; // Input for data
-  @Input() columns: string[] = []; // Input for column names
+  @Input() data: T[] = []; // Table data
+  @Input() columns: string[] = []; // Column names
+  @Input() actionsEnabled = true; // Enable/Disable Actions column
 
-  dataSource!: MatTableDataSource<T>; // Initialize later
+  dataSource!: MatTableDataSource<T>; 
   displayedColumns: string[] = [];
   totalRecords = 0;
   pageSize = 5;
+  pageSizeOptions = [5, 10, 25, 50];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -25,7 +27,10 @@ export class GenericTableComponent<T> implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    this.displayedColumns = this.columns;
+    this.displayedColumns = [...this.columns]; 
+    if (this.actionsEnabled) {
+      this.displayedColumns.push('Actions'); // Add action column dynamically
+    }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -47,5 +52,19 @@ export class GenericTableComponent<T> implements OnInit, OnChanges {
   applyFilter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  editRow(row: any) {
+    console.log("Edit:", row);
+    alert(`Editing row: ${JSON.stringify(row)}`);
+  }
+
+  deleteRow(row: any) {
+    console.log("Delete:", row);
+    alert(`Deleting row: ${JSON.stringify(row)}`);
+  }
+
+  formatHeader(column: string): string {
+    return column.replace(/_/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()); // Capitalize words
   }
 }
