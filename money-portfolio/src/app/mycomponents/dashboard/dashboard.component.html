@@ -1,23 +1,23 @@
 <div class="heading-text">Dashboard Overview</div>
 <div class="row">
   <div class="col-12 col-sm-6 col-md-3 ps-0">
-    <app-generic-card title="Total Portfolio Value" subtitle="${{ amount }}">
+    <app-generic-card title="Total Portfolio Value" subtitle="₹ {{ totalPortfolioValue }}">
       <!-- actionButtonLabel="Click Me" -->
       <!-- <p>This is the content of the card. You can put any HTML here.</p> -->
     </app-generic-card>
   </div>
   <div class="col-12 col-sm-6 col-md-3">
-    <app-generic-card title="Investments" subtitle="${{ amount }}">
+    <app-generic-card title="Investments" subtitle="₹ {{ totalInvestment }}">
       <!-- <p>Some different content for another card.</p> -->
     </app-generic-card>
   </div>
   <div class="col-12 col-sm-6 col-md-3">
-    <app-generic-card title="Expenses" subtitle="${{ amount }}">
+    <app-generic-card title="Expenses" subtitle="₹ {{ totalExpenses }}">
       <!-- <p>This is the content of Card 3.</p> -->
     </app-generic-card>
   </div>
   <div class="col-12 col-sm-6 col-md-3">
-    <app-generic-card title="Net Worth" subtitle="${{ amount }}">
+    <app-generic-card title="Net Worth" subtitle="₹ {{ netWorth }}">
       <!-- <p>This is the content of Card 4.</p> -->
     </app-generic-card>
   </div>
@@ -26,29 +26,23 @@
 
 <div class="row">
   <div class="col-6 mt-4 ps-0">
-    <app-generic-card title="Pie Chart" subtitle="Chart Subtitle">
+    <app-generic-card title="Portfolio Allocation" subtitle="Investment Types">
       <app-generic-pie-chart
-        [label]="['Red', 'Blue', 'Yellow']"
-        [data]="[300, 50, 100]"
-        [backgroundColor]="[
-          'rgb(255, 99, 132)',
-          'rgb(54, 162, 235)',
-          'rgb(255, 205, 86)'
-        ]"
+        [label]="pieChartLabels"
+        [data]="pieChartData"
         [type]="'pie'"
-      >
-      </app-generic-pie-chart>
-    </app-generic-card>
+      ></app-generic-pie-chart>
+    </app-generic-card>    
   </div>
   <div class="col-6 mt-4">
-    <app-generic-card title="Line Chart" subtitle="Chart Subtitle">
+    <app-generic-card title="Portfolio Value Over Time" subtitle="Investment Trends">
       <app-generic-pie-chart
         [type]="'line'"
-        [label]="['January', 'February', 'March', 'April']"
-        [lineChartData]="[65, 59, 80, 81]"
-      >
-      </app-generic-pie-chart>
+        [label]="lineChartLabels"
+        [lineChartData]="lineChartData"
+      ></app-generic-pie-chart>
     </app-generic-card>
+    
   </div>
 </div>
 
@@ -56,6 +50,6 @@
 <div class="heading-text">Recent Activity</div>
 <div class="row mt-4">
   <div class="col-12 ps-2 pe-2">
-    <app-generic-table [data]="users" [columns]="columns"></app-generic-table>
+    <app-generic-table [data]="users" [columns]="columns" [actionsEnabled]="false"></app-generic-table>
   </div>
 </div>

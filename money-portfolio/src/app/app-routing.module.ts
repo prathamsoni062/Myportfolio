@@ -35,7 +35,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignUpComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Default route
-  { path: '**', redirectTo: '/home' }, // Wildcard route for invalid paths
+  { path: '**', redirectTo: '/login' }, // Wildcard route for invalid paths
   // Add other routes here
 ];
 @NgModule({
