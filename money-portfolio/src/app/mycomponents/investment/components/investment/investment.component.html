@@ -2,23 +2,23 @@
     <div class="row">
       <div class="col-12 col-sm-6 col-md-4 ps-1">
         <app-generic-card
-          title="Card Title"
-          formControlName="amount1"
-          [subtitle]="investmentForm.get('amount1')?.value || ''">
+          title="Current Value"
+          formControlName="currentValue"
+          [subtitle]="investmentForm.get('currentValue')?.value || ''">
         </app-generic-card>
       </div>
       <div class="col-12 col-sm-6 col-md-4">
         <app-generic-card
-          title="Card Title"
-          formControlName="amount2"
-          [subtitle]="investmentForm.get('amount2')?.value || ''">
+          title="Total Invested"
+          formControlName="totalInvested"
+          [subtitle]="investmentForm.get('totalInvested')?.value || ''">
         </app-generic-card>
       </div>
       <div class="col-12 col-sm-6 col-md-4 pe-3">
         <app-generic-card
-          title="Card Title"
-          formControlName="amount3"
-          [subtitle]="investmentForm.get('amount3')?.value || ''">
+          title="Overall ROI"
+          formControlName="overallROI"
+          [subtitle]="investmentForm.get('overallROI')?.value || ''">
         </app-generic-card>
       </div>
     </div>

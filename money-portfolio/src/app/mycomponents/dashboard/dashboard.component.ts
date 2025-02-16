@@ -12,10 +12,10 @@ export class DashboardComponent implements OnInit {
   totalExpenses: number = 0;
   netWorth: number = 0;
   pieData: string = '';
-  pieChartLabels: string[]= [];
+  pieChartLabels: string[] = [];
   pieChartData: number[] = [];
   lineChartLabels: string[] = []; // Dates for the line chart
-lineChartData: number[] = [];  // Portfolio values for the line chart
+  lineChartData: number[] = []; // Portfolio values for the line chart
 
   constructor(private dashboardService: DashboardService) {}
   dashboardData: any;
@@ -32,7 +32,7 @@ lineChartData: number[] = [];  // Portfolio values for the line chart
     this.dashboardService.getDashboardData().subscribe((res) => {
       this.dashboardData = res;
       console.log(res);
-      
+
       this.getUsers(res);
       this.calculateTotalPortfolioValue();
     });
@@ -52,7 +52,7 @@ lineChartData: number[] = [];  // Portfolio values for the line chart
     this.users = [];
     const investmentSummary: { [key: string]: number } = {}; // For Pie Chart Data
     const portfolioOverTime: { [key: string]: number } = {}; // For Line Chart Data
-  
+
     // Map expenseDetails to users array
     if (expenseDetails && Array.isArray(expenseDetails)) {
       const formattedExpenses = expenseDetails.map((detail: any) => ({
@@ -61,21 +61,25 @@ lineChartData: number[] = [];  // Portfolio values for the line chart
         Category: detail.expenseCategory,
         Amount: `₹ ${detail.expenseAmount.toLocaleString('en-IN')}`,
       }));
-  
+
       this.users.push(...formattedExpenses); // Add expense data to users
     }
-  
+
     // Map investmentDetails to users array and aggregate for Pie Chart and Line Chart
     if (investmentDetails && Array.isArray(investmentDetails)) {
       const formattedInvestments = investmentDetails.map((detail: any) => {
         // Aggregate investment amounts by type for the pie chart
         const type = detail.investmentType;
-        investmentSummary[type] = (investmentSummary[type] || 0) + detail.investmentAmount;
-  
+        investmentSummary[type] =
+          (investmentSummary[type] || 0) + detail.investmentAmount;
+
         // Aggregate portfolio value over time for the line chart
-        const date = new Date(detail.investmentDate).toLocaleDateString('en-IN'); // Format the date
-        portfolioOverTime[date] = (portfolioOverTime[date] || 0) + detail.investmentAmount;
-  
+        const date = new Date(detail.investmentDate).toLocaleDateString(
+          'en-IN'
+        ); // Format the date
+        portfolioOverTime[date] =
+          (portfolioOverTime[date] || 0) + detail.investmentAmount;
+
         return {
           Date: new Date(detail.investmentDate),
           Description: detail.investmentType,
@@ -83,33 +87,31 @@ lineChartData: number[] = [];  // Portfolio values for the line chart
           Amount: `₹ ${detail.investmentAmount.toLocaleString('en-IN')}`,
         };
       });
-  
+
       this.users.push(...formattedInvestments); // Add investment data to users
     }
-  
+
     // Sort the users array by Date in ascending order
     this.users.sort((a, b) => a.Date.getTime() - b.Date.getTime());
-  
+
     // Format the Date into a readable format for display
     this.users = this.users.map((user) => ({
       ...user,
       Date: user.Date.toLocaleDateString('en-IN'),
     }));
-  
+
     // Generate labels and data for the Pie Chart
     this.pieChartLabels = Object.keys(investmentSummary); // Investment types
     this.pieChartData = Object.values(investmentSummary); // Corresponding amounts
-  
+
     // Generate labels and data for the Line Chart
     this.lineChartLabels = Object.keys(portfolioOverTime); // Dates
     this.lineChartData = Object.values(portfolioOverTime); // Portfolio values
-  
+
     console.log('Sorted and Combined Users Data:', this.users);
     console.log('Pie Chart Labels:', this.pieChartLabels);
     console.log('Pie Chart Data:', this.pieChartData);
     console.log('Line Chart Labels:', this.lineChartLabels);
     console.log('Line Chart Data:', this.lineChartData);
   }
-  
-  
 }

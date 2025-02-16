@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { InvestmentService } from '../../services/investment.service';
 
 @Component({
   selector: 'app-investment',
@@ -7,37 +8,51 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrl: './investment.component.scss'
 })
 export class InvestmentComponent implements OnInit {
-  amount = "3000009";
+
+  constructor(private investmentService: InvestmentService) {}  
   btnLabel = "Add Investment";
-  users = [
-    { Date: 10/10/2024, Type: 'stock', Description: 'john@example.com', Amount:30000,Current_Value:1000000 , Roi:20},
-    { Date: 10/11/2024, Type: 'bond', Description: 'jane@example.com', Amount:10000, Current_Value:500000, Roi:15},
-    
-  ];
+  investmentData:any;
+  users = [];
 
   columns = ['Date', 'Type', 'Description', 'Amount', 'Current Value', 'Roi'];
   investmentForm!: FormGroup;
   initiateForm() {
     this.investmentForm = new FormGroup({
-      amount1: new FormControl(''),
-      amount2: new FormControl(''),
-      amount3: new FormControl(''),
+      currentValue: new FormControl(''),
+      totalInvested: new FormControl(''),
+      overallROI: new FormControl(''),
       addInvestmentForm:new FormControl('')
     });
   }
 
   ngOnInit(): void {
+    this.getInvestments();
     this.initiateForm();
-    this.setAllData();
   }
-
+  
   setAllData() {
     this.investmentForm.patchValue({
-      amount1: this.amount,
-      amount2: '200',
-      amount3: this.amount
+      currentValue: this.investmentData.totalCurrentValue,
+      totalInvested: this.investmentData.totalInvested,
+      overallROI: this.investmentData.overallROI
     });
-    // this.investmentForm.get("amount2")?.patchValue('200')
+    // this.investmentForm.get("totalInvested")?.patchValue('200')
+  }
+  
+  getInvestments(){
+    this.investmentService.getInvestments().subscribe((res)=>{
+      this.investmentData = res;
+      this.setAllData();
+      console.log(this.investmentData);
+      this.users = this.investmentData.investments.map((investment:any)=>({
+        Date: new Date(investment.investmentDate).toLocaleDateString(),
+        Type:investment.investmentType,
+        Description:'',
+        Amount:investment.investmentAmount,
+        "Current Value":investment.currentValue, 
+        Roi:investment.roi
+      }))
+    })
   }
 }
 

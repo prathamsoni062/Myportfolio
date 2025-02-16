@@ -3,37 +3,53 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import apiUrlConfigs from '../app/shared/modules/http-layer/config/api-url.config';
 import { ApiService } from './shared/modules/http-layer/services/api.service';
+import { Router } from '@angular/router';
+import { snackBarType } from './shared/enums/sanckbar.enum';
+import { SnackbarService } from './shared/services/snackbar/snackbar.service';
+
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
-  // private apiUrl = 'http://localhost:5001/api/users';
-  // private apiUrl = 'https://portfolio-backend-171s.onrender.com/api/users';
-   token = sessionStorage.getItem('authToken'); // or localStorage
-   headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
-  
-  constructor(private http: HttpClient,
-    private ApiService: ApiService
-  ) { }
+  token = sessionStorage.getItem('authToken'); 
+  headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
 
-  // signUp(user: any): Observable<any> {
-  //   return this.http.post(`${this.apiUrl}/register`, user);
-  // }
+  constructor(private http: HttpClient, private ApiService: ApiService, private router: Router,private snackbar: SnackbarService) {}
+
   signUp(user: any): Observable<any> {
-    return this.ApiService.invoke(apiUrlConfigs.register, {requestBody:user});
+    return this.ApiService.invoke(apiUrlConfigs.register, { requestBody: user });
   }
 
-//   logIn(credentials: any): Observable<any> {
-//     return this.http.post(`${this.apiUrl}/login`, credentials);
-// }
   logIn(credentials: any): Observable<any> {
-    return this.ApiService.invoke(apiUrlConfigs.login, {requestBody:credentials});
-}
+    return this.ApiService.invoke(apiUrlConfigs.login, { requestBody: credentials });
+  }
 
+  isLoggedIn(): boolean {
+    const token = sessionStorage.getItem('authToken');
+    if (!token) return false;
 
-isLoggedIn(): boolean {
-  const token = sessionStorage.getItem('authToken');
-  return !!token; // Returns true if token exists
-}
+    // Check if token is expired
+    const expiry = this.getTokenExpiration(token);
+    if (expiry < Date.now() / 1000) {
+      this.logOut();
+      return false;
+    }
+    return true;
+  }
 
+  logOut(): void {
+    sessionStorage.removeItem('authToken');
+    this.snackbar.openSnackBar('Session expired. Please log in again.', snackBarType.ERROR);
+    this.router.navigate(['/login']); 
+  }
+
+  // Decode token and get expiration time
+  private getTokenExpiration(token: string): number {
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      return payload.exp || 0;
+    } catch (e) {
+      return 0;
+    }
+  }
 }
