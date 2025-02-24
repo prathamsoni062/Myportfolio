@@ -20,7 +20,7 @@ const routes: Routes = [
     canActivate: [navbarGuard],
   },
   {
-    path: 'services',
+    path: 'investment',
     component: InvestmentComponent,
     canActivate: [navbarGuard],
   },

@@ -1,0 +1,63 @@
+<h2 class="header-popup" mat-dialog-title>Add Expenses</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="expensesForm" class="pt-1">
+    <app-input 
+      label="Expense Date"       
+      placeholder="Enter Expense Date" 
+      formControlName="expenseDate"
+      
+      (valueChange)="expensesForm.get('expenseDate')?.setValue($event)">
+    </app-input>
+
+    <app-input 
+      label="Expense Category" 
+      type="text" 
+      placeholder="Investment Category" 
+      formControlName="expenseCategory"
+    
+      (valueChange)="expensesForm.get('expenseCategory')?.setValue($event)">
+    </app-input>
+
+    <app-input 
+      label="Expense Name"  
+      type="text" 
+      placeholder="Enter Expense Name" 
+      formControlName="expenseName"
+   
+      (valueChange)="expensesForm.get('expenseName')?.setValue($event)">
+    </app-input>
+
+    <app-input 
+      label="Expense Amount" 
+      type="number" 
+      placeholder="Enter Expense Amount" 
+      formControlName="expenseAmount"
+   
+      (valueChange)="expensesForm.get('expenseAmount')?.setValue($event)">
+    </app-input>
+    <app-input 
+      label="payment Method" 
+      type="text" 
+      placeholder="Enter payment Method" 
+      formControlName="paymentMethod"
+   
+      (valueChange)="expensesForm.get('paymentMethod')?.setValue($event)">
+    </app-input>
+    <app-input 
+      label="notes" 
+      type="text" 
+      placeholder="Enter notes" 
+      formControlName="notes"
+   
+      (valueChange)="expensesForm.get('notes')?.setValue($event)">
+    </app-input>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="closePopup()">Cancel</button>
+  <button mat-button color="primary" (click)="saveExpenses()" [disabled]="!expensesForm.valid">
+    Save
+  </button>
+</mat-dialog-actions>

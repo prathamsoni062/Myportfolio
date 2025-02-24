@@ -13,4 +13,18 @@ export class ExpensesService {
   getExpenses(): Observable<any> {
     return this.apiService.invoke(apiUrlConfigs.getExpenses);
   }
+
+  createExpenses(data: any): Observable<any> {
+    return this.apiService.invoke(apiUrlConfigs.createExpenses, { requestBody: data });
+  }
+
+  updateExpenses(data: any): Observable<any> {
+    const url = apiUrlConfigs.updateExpenses.pathTemplate.replace(':id', data._id); 
+    return this.apiService.invoke({ ...apiUrlConfigs.updateExpenses, pathTemplate: url }, { requestBody: data });
+  }
+
+  deleteExpenses(id: string): Observable<any> {
+    const url = apiUrlConfigs.deleteExpenses.pathTemplate.replace(':id', id);
+    return this.apiService.invoke({...apiUrlConfigs.deleteExpenses, pathTemplate: url });
+  }
 }

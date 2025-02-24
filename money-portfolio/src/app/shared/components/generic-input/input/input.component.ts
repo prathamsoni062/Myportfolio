@@ -1,23 +1,49 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, forwardRef, Input } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'app-input',
   templateUrl: './input.component.html',
-  styleUrl: './input.component.scss'
+  styleUrls: ['./input.component.scss'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => InputComponent),
+      multi: true
+    }
+  ]
 })
-export class InputComponent {
-
-  @Input() label: string = '';  // Label for the input field
+export class InputComponent implements ControlValueAccessor {
+  @Input() label: string = '';
   @Input() type: string = 'text';
   @Input() placeholder: string = '';
-  @Input() value: string = '';
   @Input() disabled: boolean = false;
+  
+  value: string = ''; // Internal value
 
-  @Output() valueChange = new EventEmitter<string>();
+  onChange = (value: any) => {}; // Placeholder function
+  onTouched = () => {}; // Placeholder function
 
-  // Method to emit the value change event
+  // When value is written from the outside (formControl)
+  writeValue(value: any): void {
+    this.value = value;
+  }
+
+  // Registers the function to be called on value change
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+
+  // Registers the function to be called on touch
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+
+  // Handles input changes
   onInputChange(event: Event): void {
     const inputElement = event.target as HTMLInputElement;
-    this.valueChange.emit(inputElement.value);
+    this.value = inputElement.value;
+    this.onChange(this.value);
+    this.onTouched();
   }
 }

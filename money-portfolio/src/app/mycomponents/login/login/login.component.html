@@ -19,24 +19,26 @@
         <p>OR</p>
       </div>
 
-      <!-- Email Input -->
-      <app-input 
-        label="Email" 
-        placeholder="Email" 
-        [(value)]="user.email"
-      ></app-input>
+      <form [formGroup]="loginForm">
+        <!-- Email Input -->
+        <app-input 
+          label="Email" 
+          placeholder="Email" 
+          formControlName="email"
+        ></app-input>
 
-      <!-- Password Input -->
-      <app-input 
-        label="Password" 
-        type="password" 
-        placeholder="Password" 
-        [(value)]="user.password"
-      ></app-input>
+        <!-- Password Input -->
+        <app-input 
+          label="Password" 
+          type="password" 
+          placeholder="Password" 
+          formControlName="password"
+        ></app-input>
 
-      <button mat-raised-button color="primary" class="full-width" (click)="onSignIn()">
-        Sign In
-      </button>
+        <button mat-raised-button color="primary" class="full-width" (click)="onSignIn()">
+          Sign In
+        </button>
+      </form>
     </div>
     <div class="signup-container">
       <h3>New Here?</h3>

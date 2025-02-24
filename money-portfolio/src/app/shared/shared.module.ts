@@ -17,6 +17,7 @@ import { GenericTableComponent } from './components/generic-table/generic-table.
 import { GenericPieChartComponent } from './components/generic-pie-chart/generic-pie-chart.component';
 import { StackedBarChartComponent } from './components/stacked-bar-chart/stacked-bar-chart.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 const components = [
   InputComponent,
   BtnComponent,
@@ -24,7 +25,8 @@ const components = [
   GenericCardComponent,
   GenericTableComponent,
   GenericPieChartComponent,
-  StackedBarChartComponent
+  StackedBarChartComponent,
+  ConfirmationDialogComponent
 
 ] as const;
 
