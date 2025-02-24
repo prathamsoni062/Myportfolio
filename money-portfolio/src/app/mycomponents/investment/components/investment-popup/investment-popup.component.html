@@ -1,1 +1,57 @@
-<p>investment-popup works!</p>
+<h2 class="header-popup" mat-dialog-title>Add Investment</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="investmentForm" class="pt-1">
+    <app-input 
+      label="Date" 
+      
+      placeholder="Enter Date" 
+      formControlName="date"
+      
+      (valueChange)="investmentForm.get('date')?.setValue($event)">
+    </app-input>
+
+    <app-input 
+      label="Type" 
+      type="text" 
+      placeholder="Investment Type" 
+      formControlName="type"
+    
+      (valueChange)="investmentForm.get('type')?.setValue($event)">
+    </app-input>
+
+    <app-input 
+      label="Amount" 
+      type="number" 
+      placeholder="Enter Amount" 
+      formControlName="amount"
+   
+      (valueChange)="investmentForm.get('amount')?.setValue($event)">
+    </app-input>
+
+    <app-input 
+      label="Current Value" 
+      type="number" 
+      placeholder="Enter Current Value" 
+      formControlName="currentValue"
+   
+      (valueChange)="investmentForm.get('currentValue')?.setValue($event)">
+    </app-input>
+
+    <!-- <app-input 
+      label="ROI (%)" 
+      type="number" 
+      placeholder="Enter ROI" 
+      formControlName="roi"
+   
+      (valueChange)="investmentForm.get('roi')?.setValue($event)">
+    </app-input> -->
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="closePopup()">Cancel</button>
+  <button mat-button color="primary" (click)="saveInvestment()" [disabled]="!investmentForm.valid">
+    Save
+  </button>
+</mat-dialog-actions>

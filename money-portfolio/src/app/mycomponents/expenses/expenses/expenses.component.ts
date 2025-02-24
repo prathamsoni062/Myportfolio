@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ExpensesService } from '../services/expenses.service';
+import { ExpensesPopupComponent } from './expenses-popup/expenses-popup.component';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmationDialogService } from 'src/app/shared/services/dialog/confirmation-dialog.service';
 
 @Component({
   selector: 'app-expenses',
@@ -8,7 +11,10 @@ import { ExpensesService } from '../services/expenses.service';
   styleUrls: ['./expenses.component.scss'], // Fixed typo `styleUrl`
 })
 export class ExpensesComponent implements OnInit {
-  constructor(private expensesService: ExpensesService) {}
+  constructor(private expensesService: ExpensesService,
+    private dialog: MatDialog,
+    private dialogService: ConfirmationDialogService
+  ) {}
 
   totalExpenses: number = 0;
   monthlyBudget: number = 0;
@@ -41,7 +47,7 @@ export class ExpensesComponent implements OnInit {
     this.expensesForm.patchValue({
       totalExpenses: this.expensesData.totalExpenses,
       monthlyBudget: '200',
-      currentMonthExpenses: this.expensesData?.currentMonthExpenses,
+      currentMonthExpenses: this.expensesData?.currentMonthTotal,
     });
   }
 
@@ -54,15 +60,52 @@ export class ExpensesComponent implements OnInit {
 
       // Map expenses to table data
       this.users = this.expensesData.expenses.map((expense: any) => ({
+        _id: expense._id,
         Date: new Date(expense.expenseDate).toLocaleDateString(),
         Type: expense.expenseCategory,
         Description: expense.expenseName,
         Amount: expense.expenseAmount,
+        paymentMethod: expense.paymentMethod,
+        notes:expense.notes
       }));
     });
   }
 
-  
+  openPopup(data: any = null){
+    const isEdit = !!data;
+    const dialogRef = this.dialog.open(ExpensesPopupComponent, {
+      width: '400px',
+      disableClose: false,
+      data: {...data, isEdit},
+    });
 
-  
+    dialogRef.afterClosed().subscribe((result)=>{
+      if(result){
+        this.getExpensesData();
+      }
+    })
+  }
+
+  editInvestment(row:any){
+    this.openPopup(row);
+  }
+  deleteInvestment(row:any){
+    this.dialogService
+      .confirm(
+        'Delete Investment',
+        'Are you sure you want to delete this investment?'
+      )
+      .subscribe((confirmed) => {
+        if (confirmed) {
+          this.expensesService.deleteExpenses(row._id).subscribe(
+            (res) => {
+              this.getExpensesData();
+            },
+            (error) => {
+              console.error('Error deleting investment:', error);
+            }
+          );
+        }
+      });
+  }
 }

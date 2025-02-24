@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, ViewChild, OnChanges, SimpleChanges } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -12,6 +12,9 @@ export class GenericTableComponent<T> implements OnInit, OnChanges {
   @Input() data: T[] = []; // Table data
   @Input() columns: string[] = []; // Column names
   @Input() actionsEnabled = true; // Enable/Disable Actions column
+
+  @Output() edit = new EventEmitter<T>(); // Emits selected row for editing
+  @Output() delete = new EventEmitter<T>(); // Emits selected row for editing
 
   dataSource!: MatTableDataSource<T>; 
   displayedColumns: string[] = [];
@@ -55,13 +58,13 @@ export class GenericTableComponent<T> implements OnInit, OnChanges {
   }
 
   editRow(row: any) {
-    console.log("Edit:", row);
-    alert(`Editing row: ${JSON.stringify(row)}`);
+    this.edit.emit(row); // Emit row data for editing
   }
-
+  
   deleteRow(row: any) {
-    console.log("Delete:", row);
-    alert(`Deleting row: ${JSON.stringify(row)}`);
+    this.delete.emit(row); // Emit row data for editing
+    // console.log("Delete:", row);
+    // alert(`Deleting row: ${JSON.stringify(row)}`);
   }
 
   formatHeader(column: string): string {
