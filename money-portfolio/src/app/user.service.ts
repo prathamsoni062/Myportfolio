@@ -52,4 +52,8 @@ export class UserService {
       return 0;
     }
   }
+
+  currentUser():Observable<any>{
+    return this.ApiService.invoke(apiUrlConfigs.currentUser);
+  }
 }

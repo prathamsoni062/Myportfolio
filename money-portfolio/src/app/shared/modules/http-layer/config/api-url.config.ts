@@ -29,6 +29,20 @@ const apiUrlConfigs ={
         isRetryAllowed: false,
         useHttpCookies: false
     }),
+
+    currentUser: new ApiConfigModel({
+        module: 'base',
+        pathTemplate: 'users/current',
+        method: "GET",
+        shouldUseStub: false,
+        stubPath: './api/users.json',
+        handleSuccessInComponent: true,
+        handleErrorInComponent: true,
+        isBlocking: false,
+        isSilent: false,
+        isRetryAllowed: false,
+        useHttpCookies: false
+    }),
     getDashboardData: new ApiConfigModel({
         module: 'base',
         pathTemplate: 'dashboard/getDashboardData',

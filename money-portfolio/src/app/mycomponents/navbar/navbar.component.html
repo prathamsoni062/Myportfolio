@@ -8,7 +8,39 @@
   <button mat-button class="nav-button" routerLink="/expenses">Expenses</button>
   <button mat-button class="nav-button" routerLink="/report">Report</button>
   <button mat-button class="nav-button" routerLink="/goal">Goal</button>
-  <!-- <button mat-button class="nav-button" routerLink="/setting">Setting</button> -->
   <button mat-button class="nav-button" routerLink="/contact">Contact</button>
-  <mat-icon class="profile-icon">person</mat-icon>
+
+  <!-- Profile Menu Trigger -->
+  <mat-icon class="profile-icon" [matMenuTriggerFor]="profileMenu">person</mat-icon>
+
+  <!-- Profile Dropdown -->
+  <mat-menu #profileMenu="matMenu" class="profile-dropdown">
+    <div class="profile-card">
+      <!-- Profile Picture (Centered) -->
+      <div class="profile-img-container">
+        <img [src]="user.profilePicture" alt="Profile Picture" class="profile-img">
+      </div>
+
+      <!-- Profile Details (Left-aligned) -->
+      <div class="profile-info">
+        <mat-icon>person</mat-icon>
+        <span>{{ user.username }}</span>
+      </div>
+
+      <div class="profile-info">
+        <mat-icon>smartphone</mat-icon>
+        <span>{{ user.mobileNo }}</span>
+      </div>
+
+      <div class="profile-info">
+        <mat-icon>email</mat-icon>
+        <span>{{ user.email }}</span>
+      </div>
+
+      <!-- Logout Button (Centered) -->
+      <div class="logout-container">
+        <button mat-button color="warn" (click)="logout()">Logout</button>
+      </div>
+    </div>
+  </mat-menu>
 </mat-toolbar>
