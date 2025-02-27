@@ -11,17 +11,33 @@
   <button mat-button class="nav-button" routerLink="/contact">Contact</button>
 
   <!-- Profile Menu Trigger -->
-  <mat-icon class="profile-icon" [matMenuTriggerFor]="profileMenu">person</mat-icon>
+  <div [matMenuTriggerFor]="profileMenu" class="profile-icon-container">
+    <ng-container *ngIf="user.profilePicture; else initialsBlock">
+      <img [src]="user.profilePicture" alt="Profile Picture" class="profile-img">
+    </ng-container>
+
+    <!-- Initials Block -->
+    <ng-template #initialsBlock>
+      <div class="profile-initials">{{ getInitials(user.username) }}</div>
+    </ng-template>
+  </div>
 
   <!-- Profile Dropdown -->
   <mat-menu #profileMenu="matMenu" class="profile-dropdown">
     <div class="profile-card">
-      <!-- Profile Picture (Centered) -->
+      <!-- Profile Picture or Initials -->
       <div class="profile-img-container">
-        <img [src]="user.profilePicture" alt="Profile Picture" class="profile-img">
+        <ng-container *ngIf="user.profilePicture; else initialsBlockDropdown">
+          <img [src]="user.profilePicture" alt="Profile Picture" class="profile-img">
+        </ng-container>
+
+        <!-- Initials Block -->
+        <ng-template #initialsBlockDropdown>
+          <div class="profile-initials">{{ getInitials(user.username) }}</div>
+        </ng-template>
       </div>
 
-      <!-- Profile Details (Left-aligned) -->
+      <!-- Profile Details -->
       <div class="profile-info">
         <mat-icon>person</mat-icon>
         <span>{{ user.username }}</span>
@@ -37,7 +53,7 @@
         <span>{{ user.email }}</span>
       </div>
 
-      <!-- Logout Button (Centered) -->
+      <!-- Logout Button -->
       <div class="logout-container">
         <button mat-button color="warn" (click)="logout()">Logout</button>
       </div>

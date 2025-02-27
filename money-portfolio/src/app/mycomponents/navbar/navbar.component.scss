@@ -28,14 +28,38 @@
   }
   
   /* Profile Icon */
-  .profile-icon {
-    margin-right: 15px;
-    color: rgb(75, 73, 73);
+  .profile-icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
     cursor: pointer;
   }
   
-  .profile-icon:hover {
-    color: rgb(22, 19, 19);
+  /* Profile Image */
+  .profile-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #6B9080;
+  }
+  
+  /* Profile Initials */
+  .profile-initials {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background-color: #6B9080;
+    border-radius: 50%;
+    text-transform: uppercase;
   }
   
   /* Profile Dropdown */
@@ -61,15 +85,6 @@
     margin-bottom: 10px;
   }
   
-  /* Profile Picture */
-  .profile-img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #6B9080;
-  }
-  
   /* Left-align profile details */
   .profile-info {
     display: flex;
@@ -78,7 +93,7 @@
     font-size: 14px;
     color: #333;
     margin-bottom: 5px;
-    padding-left: 10px; /* Align text to the left */
+    padding-left: 10px;
   }
   
   .profile-info mat-icon {
