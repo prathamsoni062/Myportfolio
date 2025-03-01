@@ -9,9 +9,10 @@
           <button mat-icon-button color="primary">
             <mat-icon>facebook</mat-icon>
           </button>
-          <button mat-icon-button color="accent">
-            <mat-icon>google</mat-icon>
-          </button>
+
+          <!-- Google Sign-In Button (GIS) -->
+          <div id="google-signin-btn"></div>
+
           <button mat-icon-button color="primary">
             <mat-icon>linkedin</mat-icon>
           </button>
@@ -19,15 +20,13 @@
         <p>OR</p>
       </div>
 
-      <form [formGroup]="loginForm">
-        <!-- Email Input -->
+      <form [formGroup]="loginForm">        
         <app-input 
           label="Email" 
           placeholder="Email" 
           formControlName="email"
         ></app-input>
 
-        <!-- Password Input -->
         <app-input 
           label="Password" 
           type="password" 

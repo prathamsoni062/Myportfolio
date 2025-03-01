@@ -11,17 +11,26 @@ import { SnackbarService } from './shared/services/snackbar/snackbar.service';
   providedIn: 'root',
 })
 export class UserService {
-  token = sessionStorage.getItem('authToken'); 
+  token = sessionStorage.getItem('authToken');
   headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
 
-  constructor(private http: HttpClient, private ApiService: ApiService, private router: Router,private snackbar: SnackbarService) {}
+  constructor(
+    private http: HttpClient,
+    private ApiService: ApiService,
+    private router: Router,
+    private snackbar: SnackbarService
+  ) {}
 
   signUp(user: any): Observable<any> {
-    return this.ApiService.invoke(apiUrlConfigs.register, { requestBody: user });
+    return this.ApiService.invoke(apiUrlConfigs.register, {
+      requestBody: user,
+    });
   }
 
   logIn(credentials: any): Observable<any> {
-    return this.ApiService.invoke(apiUrlConfigs.login, { requestBody: credentials });
+    return this.ApiService.invoke(apiUrlConfigs.login, {
+      requestBody: credentials,
+    });
   }
 
   isLoggedIn(): boolean {
@@ -39,8 +48,11 @@ export class UserService {
 
   logOut(): void {
     sessionStorage.removeItem('authToken');
-    this.snackbar.openSnackBar('Session expired. Please log in again.', snackBarType.ERROR);
-    this.router.navigate(['/login']); 
+    this.snackbar.openSnackBar(
+      'Session expired. Please log in again.',
+      snackBarType.ERROR
+    );
+    this.router.navigate(['/login']);
   }
 
   // Decode token and get expiration time
@@ -53,7 +65,13 @@ export class UserService {
     }
   }
 
-  currentUser():Observable<any>{
+  currentUser(): Observable<any> {
     return this.ApiService.invoke(apiUrlConfigs.currentUser);
+  }
+
+  googleLogin(token: string): Observable<any> {
+    return this.ApiService.invoke(apiUrlConfigs.googleLogin, {
+      requestBody: { token },
+    });
   }
 }

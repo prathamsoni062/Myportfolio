@@ -43,6 +43,21 @@ const apiUrlConfigs ={
         isRetryAllowed: false,
         useHttpCookies: false
     }),
+
+    googleLogin: new ApiConfigModel({
+        module: 'base',
+        pathTemplate: 'users/googleLogin',
+        method: "POST",
+        shouldUseStub: false,
+        stubPath: './api/users.json',
+        handleSuccessInComponent: true,
+        handleErrorInComponent: true,
+        isBlocking: false,
+        isSilent: false,
+        isRetryAllowed: false,
+        useHttpCookies: false
+    }),
+    
     getDashboardData: new ApiConfigModel({
         module: 'base',
         pathTemplate: 'dashboard/getDashboardData',
