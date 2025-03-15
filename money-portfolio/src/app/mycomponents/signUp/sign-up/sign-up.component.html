@@ -4,68 +4,101 @@
       <div class="signup-header">
         <img src="assets/images/website_logo.png" alt="Logo" class="signup-logo" />
         <h2>Create Your Account</h2>
-        <p>Sign up using social networks</p>
-        <div class="social-signup">
-          <!-- Social Signup Buttons using app-btn -->
-          <app-btn icon="facebook" color="primary" (onClick)="signUpWithFacebook()"></app-btn>
-          <app-btn icon="google" color="accent" (onClick)="signUpWithGoogle()"></app-btn>
-          <app-btn icon="linkedin" color="primary" (onClick)="signUpWithLinkedIn()"></app-btn>
-        </div>
+        <p>Sign up using social networks</p>        
+          <div class="pb-2" id="google-signin-btn"></div>             
         <p>OR</p>
       </div>
+
       <form [formGroup]="signInForm">
-      <!-- Full Name Input using app-input -->
-      <app-input 
-        label="Full Name" 
-        placeholder="Full Name" 
-        formControlName="username"
-      ></app-input>
-      
-      <!-- Email Input using app-input -->
-      <app-input 
-        label="Email" 
-        placeholder="Email" 
-        formControlName="email"
-      ></app-input>
-      
-      <!-- Mobile Number Input using app-input -->
-      <app-input 
-        label="Mobile Number" 
-        type="tel" 
-        placeholder="Mobile Number" 
-        formControlName="mobileNo"
-      ></app-input>
-      
-      <!-- Password Input using app-input -->
-      <app-input 
-        label="Password" 
-        type="password" 
-        placeholder="Password" 
-        formControlName="password"
-      ></app-input>
-      
-      <!-- Confirm Password Input using app-input -->
-      <app-input 
-        label="Confirm Password" 
-        type="password" 
-        placeholder="Confirm Password" 
-        formControlName="confirmPassword"
-      ></app-input>
-      
-      <!-- Sign Up Button using app-btn -->
-      <app-btn 
-        label="Sign Up" 
-        color="primary" 
-        [fullWidth]="true" 
-        (onClick)="onSignUp()"
-      ></app-btn>
-    </form>
+        <!-- Full Name -->
+        <app-input 
+          label="Full Name" 
+          placeholder="Full Name" 
+          formControlName="username"
+        ></app-input>
+        <p *ngIf="signInForm.get('username')?.invalid && signInForm.get('username')?.touched" class="error">
+          <span *ngIf="signInForm.get('username')?.errors?.['required']">Name is required.</span>
+          <span *ngIf="signInForm.get('username')?.errors?.['minlength']">Name must be at least 3 characters.</span>
+        </p>
+
+        <!-- Email -->
+        <app-input 
+          label="Email" 
+          placeholder="Email" 
+          formControlName="email"
+        ></app-input>
+        <p *ngIf="signInForm.get('email')?.invalid && signInForm.get('email')?.touched" class="error">
+          <span *ngIf="signInForm.get('email')?.errors?.['required']">Email is required.</span>
+          <span *ngIf="signInForm.get('email')?.errors?.['pattern']">Enter a valid email (e.g., admin&#64;gmail.com).</span>
+        </p>
+
+        <!-- Mobile Number -->
+        <app-input 
+          label="Mobile Number" 
+          type="tel" 
+          placeholder="Mobile Number" 
+          formControlName="mobileNo"
+        ></app-input>
+        <p *ngIf="signInForm.get('mobileNo')?.invalid && signInForm.get('mobileNo')?.touched" class="error">
+          <span *ngIf="signInForm.get('mobileNo')?.errors?.['required']">Mobile number is required.</span>
+          <span *ngIf="signInForm.get('mobileNo')?.errors?.['pattern']">Mobile number must start with 6-9 and be 10 digits long.</span>
+        </p>
+
+        <!-- Password -->
+        <app-input 
+          label="Password" 
+          type="password" 
+          placeholder="Password" 
+          formControlName="password"
+        ></app-input>
+        <p *ngIf="signInForm.get('password')?.touched">
+          <span [ngClass]="{'valid': passwordHasMinLength, 'invalid': !passwordHasMinLength}">
+            ✔ Minimum 8 characters
+          </span>
+          <br>
+          <span [ngClass]="{'valid': passwordHasUppercase, 'invalid': !passwordHasUppercase}">
+            ✔ One uppercase letter
+          </span>
+          <br>
+          <span [ngClass]="{'valid': passwordHasLowercase, 'invalid': !passwordHasLowercase}">
+            ✔ One lowercase letter
+          </span>
+          <br>
+          <span [ngClass]="{'valid': passwordHasNumber, 'invalid': !passwordHasNumber}">
+            ✔ One number
+          </span>
+          <br>
+          <span [ngClass]="{'valid': passwordHasSpecialChar, 'invalid': !passwordHasSpecialChar}">
+            ✔ One special character (&#64;$!%*?&)
+          </span>
+        </p>
+        
+
+        <!-- Confirm Password -->
+        <app-input 
+          label="Confirm Password" 
+          type="password" 
+          placeholder="Confirm Password" 
+          formControlName="confirmPassword"
+        ></app-input>
+        <p *ngIf="signInForm.hasError('mismatch')" class="error">
+          Passwords do not match.
+        </p>
+
+        <!-- Sign Up Button -->
+        <app-btn 
+          label="Sign Up" 
+          color="primary" 
+          [fullWidth]="true" 
+          (onClick)="onSignUp()"
+        ></app-btn>
+      </form>
     </div>
-    
+
+    <!-- Login Redirect -->
     <div class="login-container">
       <h3>Already Have an Account?</h3>
       <p>Login to access your account and explore new opportunities!</p>
-      <!-- Login Button using app-btn -->
       <app-btn 
         label="Login" 
         color="accent" 

@@ -4,30 +4,19 @@
       <div class="login-header">
         <img src="assets/images/website_logo.png" alt="Logo" class="login-logo" />
         <h2>Login to Your Account</h2>
-        <p>Login using social networks</p>
-        <div class="social-login">
-          <button mat-icon-button color="primary">
-            <mat-icon>facebook</mat-icon>
-          </button>
-          <button mat-icon-button color="accent">
-            <mat-icon>google</mat-icon>
-          </button>
-          <button mat-icon-button color="primary">
-            <mat-icon>linkedin</mat-icon>
-          </button>
-        </div>
+        <p>Login using social networks</p>        
+          <!-- Google Sign-In Button (GIS) -->
+          <div class="pb-2" id="google-signin-btn"></div>          
         <p>OR</p>
       </div>
 
-      <form [formGroup]="loginForm">
-        <!-- Email Input -->
+      <form [formGroup]="loginForm">        
         <app-input 
           label="Email" 
           placeholder="Email" 
           formControlName="email"
         ></app-input>
 
-        <!-- Password Input -->
         <app-input 
           label="Password" 
           type="password" 

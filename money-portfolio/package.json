@@ -38,6 +38,7 @@
     "bootstrap": "^5.3.3",
     "chart.js": "^4.4.4",
     "css-loader": "^6.8.1",
+    "gapi-script": "^1.2.0",
     "luxon": "^3.4.4",
     "moment": "^2.29.4",
     "ng-apexcharts": "^1.15.0",
