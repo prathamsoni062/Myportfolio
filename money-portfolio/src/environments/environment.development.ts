@@ -22,8 +22,8 @@ export const environment = {
         'https://app-dev-launchpad-service-gaa9gqcsgedpc8er.westus-01.azurewebsites.net',
       faqModule:
         'https://app-dev-launchpad-service-gaa9gqcsgedpc8er.westus-01.azurewebsites.net',
-        // base: 'https://portfolio-backend-171s.onrender.com/api',
-        base: 'http://localhost:5001/api',
+        base: 'https://portfolio-backend-171s.onrender.com/api',
+        // base: 'http://localhost:5001/api',
     },
     appInsights: {
       instrumentationKey: '',
