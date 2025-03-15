@@ -12,13 +12,13 @@
 
   <!-- Profile Menu Trigger -->
   <div [matMenuTriggerFor]="profileMenu" class="profile-icon-container">
-    <ng-container *ngIf="user.profilePicture; else initialsBlock">
-      <img [src]="user.profilePicture" alt="Profile Picture" class="profile-img">
+    <ng-container *ngIf="user?.picture; else initialsBlock">
+      <img [src]="user.picture" alt="Profile Picture" class="profile-img">
     </ng-container>
 
     <!-- Initials Block -->
     <ng-template #initialsBlock>
-      <div class="profile-initials">{{ getInitials(user.username) }}</div>
+      <div class="profile-initials">{{ getInitials(user?.username || '') }}</div>
     </ng-template>
   </div>
 
@@ -27,30 +27,30 @@
     <div class="profile-card">
       <!-- Profile Picture or Initials -->
       <div class="profile-img-container">
-        <ng-container *ngIf="user.profilePicture; else initialsBlockDropdown">
-          <img [src]="user.profilePicture" alt="Profile Picture" class="profile-img">
+        <ng-container *ngIf="user?.picture; else initialsBlockDropdown">
+          <img [src]="user.picture" alt="Profile Picture" class="profile-img">
         </ng-container>
 
         <!-- Initials Block -->
         <ng-template #initialsBlockDropdown>
-          <div class="profile-initials">{{ getInitials(user.username) }}</div>
+          <div class="profile-initials">{{ getInitials(user?.username || '') }}</div>
         </ng-template>
       </div>
 
       <!-- Profile Details -->
       <div class="profile-info">
         <mat-icon>person</mat-icon>
-        <span>{{ user.username }}</span>
+        <span>{{ user?.username }}</span>
       </div>
 
-      <div class="profile-info">
+      <div class="profile-info" *ngIf="user?.mobileNo">
         <mat-icon>smartphone</mat-icon>
-        <span>{{ user.mobileNo }}</span>
+        <span>{{ user?.mobileNo }}</span>
       </div>
 
       <div class="profile-info">
         <mat-icon>email</mat-icon>
-        <span>{{ user.email }}</span>
+        <span>{{ user?.email }}</span>
       </div>
 
       <!-- Logout Button -->

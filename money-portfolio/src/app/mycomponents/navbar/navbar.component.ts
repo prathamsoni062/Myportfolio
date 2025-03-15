@@ -18,7 +18,7 @@ export class NavbarComponent implements OnInit {
     username: 'John Doe',
     email: 'johndoe@example.com',
     mobileNo: 9407505792,
-    profilePicture: '', // Empty to test initials
+    picture: null, // Empty to test initials
   };
 
   logout() {
@@ -29,7 +29,7 @@ export class NavbarComponent implements OnInit {
     this.userService.currentUser().subscribe((res: any) => {
       console.log(res);
       this.user = res;
-      // this.user.profilePicture = 'https://i.pravatar.cc/150?img=3'
+      // this.user.picture = 'https://i.pravatar.cc/150?img=3'
     });
   }
 

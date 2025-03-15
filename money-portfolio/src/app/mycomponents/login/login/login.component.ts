@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
 
   initGoogleSignIn() {
     google.accounts.id.initialize({
-      client_id: '513709081151-hpi5mebu8ls5gjjv6s9eov3b8s2va4lc.apps.googleusercontent.com',
+      client_id: '513709081151-74o12mag93hb7kr7g1nlrqabm8gdlv43.apps.googleusercontent.com',
       callback: (response: any) => this.handleCredentialResponse(response),
     });
 

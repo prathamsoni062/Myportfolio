@@ -5,10 +5,12 @@ import { snackBarType } from 'src/app/shared/enums/sanckbar.enum';
 import { SnackbarService } from 'src/app/shared/services/snackbar/snackbar.service';
 import { UserService } from 'src/app/user.service';
 
+declare var google: any; // Declare google object for GIS
+
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
-  styleUrl: './sign-up.component.scss',
+  styleUrls: ['./sign-up.component.scss'],
 })
 export class SignUpComponent implements OnInit {
   signInForm!: FormGroup;
@@ -52,6 +54,7 @@ export class SignUpComponent implements OnInit {
     this.signInForm.get('password')?.valueChanges.subscribe((value) => {
       this.checkPasswordStrength(value);
     });
+    this.initGoogleSignIn();
   }
 
   constructor(
@@ -102,6 +105,34 @@ export class SignUpComponent implements OnInit {
           'Error occurred during signup',
           snackBarType.ERROR
         );
+      }
+    );
+  }
+
+  initGoogleSignIn() {
+    google.accounts.id.initialize({
+      client_id: '513709081151-74o12mag93hb7kr7g1nlrqabm8gdlv43.apps.googleusercontent.com',
+      callback: (response: any) => this.handleCredentialResponse(response),
+    });
+
+    google.accounts.id.renderButton(
+      document.getElementById('google-signin-btn'),
+      { theme: 'outline', size: 'large', width: '300' }
+    );
+  }
+
+  handleCredentialResponse(response: any) {
+    console.log('Google ID Token:', response.credential);
+
+    this.userService.googleLogin(response.credential).subscribe(
+      (res) => {
+        sessionStorage.setItem('authToken', res.accessToken);
+        this.snackbar.openSnackBar('Google Login successful', snackBarType.SUCCESS);
+        this.router.navigate(['/home']);
+      },
+      (err) => {
+        console.error('Google Login failed', err);
+        this.snackbar.openSnackBar('Google Login failed', snackBarType.ERROR);
       }
     );
   }
