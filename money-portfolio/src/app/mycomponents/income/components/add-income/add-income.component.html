@@ -1,0 +1,52 @@
+<h2 class="header-popup" mat-dialog-title>Add incomes</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="incomeForm" class="pt-1">
+    <app-generic-datepicker
+    formControlName="incomeDate"
+    label="Income Date"
+    placeholder="Select income date"
+    [minDate]="minSelectableDate"
+    [maxDate]="maxSelectableDate">
+  </app-generic-datepicker>
+  
+    <!-- <app-input label="Income Date" placeholder="Enter Income Date" formControlName="incomeDate"
+      (valueChange)="incomeForm.get('incomeDate')?.setValue($event)">
+    </app-input> -->
+
+    <app-input label="Income Source" type="text" placeholder="Investment Source" formControlName="incomeSource"
+      (valueChange)="incomeForm.get('incomeSource')?.setValue($event)">
+    </app-input>
+
+    <app-input label="Income Amount" type="number" placeholder="Enter Income Amount" formControlName="incomeAmount"
+      (valueChange)="incomeForm.get('incomeAmount')?.setValue($event)">
+    </app-input>
+    <app-generic-select label="Frequency" [options]="frequencyOptions" [selectedValue]="selectedSource"
+      (valueChange)="onSourceChange($event)">
+    </app-generic-select>
+
+    <!-- <app-input 
+      label="frequency" 
+      type="text" 
+      placeholder="Frequency" 
+      formControlName="frequency"
+   
+      (valueChange)="incomeForm.get('frequency')?.setValue($event)">
+    </app-input> -->
+    <!-- <app-input 
+      label="notes" 
+      type="text" 
+      placeholder="Enter notes" 
+      formControlName="notes"
+   
+      (valueChange)="incomeForm.get('notes')?.setValue($event)">
+    </app-input> -->
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="closePopup()">Cancel</button>
+  <button mat-button color="primary" (click)="saveincomes()" [disabled]="!incomeForm.valid">
+    Save
+  </button>
+</mat-dialog-actions>

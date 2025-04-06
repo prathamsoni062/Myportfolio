@@ -27,6 +27,8 @@ import { InvestmentPopupComponent } from './mycomponents/investment/components/i
 import { customInterceptor } from './mycomponents/dashboard/services/custom.interceptor';
 import { AuthInterceptor } from './core/auth.interceptor';
 import { ExpensesPopupComponent } from './mycomponents/expenses/expenses/expenses-popup/expenses-popup.component';
+import { IncomeComponent } from './mycomponents/income/components/income/income.component';
+import { AddIncomeComponent } from './mycomponents/income/components/add-income/add-income.component';
 
 export function HttpLoaderFactory(http: HttpClient):TranslateHttpLoader {
   return new TranslateHttpLoader(http);
@@ -43,10 +45,11 @@ const components = [
   SignUpComponent,
   LoginComponent,
   InvestmentPopupComponent,
-  ExpensesPopupComponent
+  ExpensesPopupComponent,
+  IncomeComponent
 ];
 @NgModule({
-  declarations: [AppComponent, ...components, ],
+  declarations: [AppComponent, ...components, AddIncomeComponent, ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,

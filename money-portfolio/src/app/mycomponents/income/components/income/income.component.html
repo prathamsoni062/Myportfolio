@@ -1,0 +1,54 @@
+<form [formGroup]="incomeForm">
+  <div class="heading-text">Income Summary</div>
+  <div class="row">
+    <div class="col-6 ps-1">
+      <app-generic-card
+        title="Total Monthly Income"
+        formControlName="totalMIncome"
+        [subtitle]="incomeForm.get('totalMIncome')?.value || ''"
+      >
+      </app-generic-card>
+    </div>
+    <div class="col-6">
+      <app-generic-card
+        title="Total Annual Income"
+        formControlName="totalAIncome"
+        [subtitle]="incomeForm.get('totalAIncome')?.value || ''"
+      >
+      </app-generic-card>
+    </div>    
+  </div>
+
+  <div class="income-header mt-3 mb-3">
+    <div class="heading-text">Income Details</div>
+    <app-btn [label]="btnLabel" (click)="openPopup()"></app-btn>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <app-generic-table [data]="users" [columns]="columns" [actionsEnabled]="true" (edit)="editIncome($event)" (delete)="deleteIncome($event)"></app-generic-table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-6 mt-4 ps-0">
+      <app-generic-card title="Income Breakdown" subtitle="Investment Types">
+        <app-generic-pie-chart
+          [label]="pieChartLabels"
+          [data]="pieChartData"
+          [type]="'pie'"
+        ></app-generic-pie-chart>
+      </app-generic-card>    
+    </div>
+    <div class="col-6 mt-4">
+      <app-generic-card title="Income Growth" subtitle="Investment Trends">
+        <app-generic-pie-chart
+          [type]="'line'"
+          [label]="lineChartLabels"
+          [lineChartData]="lineChartData"
+        ></app-generic-pie-chart>
+      </app-generic-card>
+      
+    </div>
+  </div>
+</form>

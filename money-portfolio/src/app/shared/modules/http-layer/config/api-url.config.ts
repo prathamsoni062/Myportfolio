@@ -181,7 +181,59 @@ const apiUrlConfigs ={
         isSilent: false,
         isRetryAllowed: false,
         useHttpCookies: false
-    })
+    }),
+    getIncome: new ApiConfigModel({
+        module: 'base',
+        pathTemplate: 'income/getIncome',
+        method: "GET",
+        shouldUseStub: false,
+        stubPath: './api/income.json',
+        handleSuccessInComponent: true,
+        handleErrorInComponent: true,
+        isBlocking: false,
+        isSilent: false,
+        isRetryAllowed: false,
+        useHttpCookies: false
+    }),
+    createIncome: new ApiConfigModel({
+        module: 'base',
+        pathTemplate: 'income/createIncome',
+        method: "POST",
+        shouldUseStub: false,
+        stubPath: './api/income.json',
+        handleSuccessInComponent: true,
+        handleErrorInComponent: true,
+        isBlocking: false,
+        isSilent: false,
+        isRetryAllowed: false,
+        useHttpCookies: false
+    }),
+    updateIncome: new ApiConfigModel({
+        module: 'base',
+        pathTemplate: 'income/updateIncome/:id',
+        method: "PUT",
+        shouldUseStub: false,
+        stubPath: './api/income.json',
+        handleSuccessInComponent: true,
+        handleErrorInComponent: true,
+        isBlocking: false,
+        isSilent: false,
+        isRetryAllowed: false,
+        useHttpCookies: false
+    }),
+    deleteIncome: new ApiConfigModel({
+        module: 'base',
+        pathTemplate: 'income/deleteIncome/:id',
+        method: "DELETE",
+        shouldUseStub: false,
+        stubPath: './api/income.json',
+        handleSuccessInComponent: true,
+        handleErrorInComponent: true,
+        isBlocking: false,
+        isSilent: false,
+        isRetryAllowed: false,
+        useHttpCookies: false
+    }),
 };
 
 export default apiUrlConfigs;

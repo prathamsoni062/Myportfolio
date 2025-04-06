@@ -18,6 +18,13 @@ import { GenericPieChartComponent } from './components/generic-pie-chart/generic
 import { StackedBarChartComponent } from './components/stacked-bar-chart/stacked-bar-chart.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
+import { GenericSelectComponent } from './components/generic-select/generic-select.component';
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { GenericDatepickerComponent } from './components/generic-datepicker/generic-datepicker.component';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 const components = [
   InputComponent,
   BtnComponent,
@@ -26,7 +33,9 @@ const components = [
   GenericTableComponent,
   GenericPieChartComponent,
   StackedBarChartComponent,
-  ConfirmationDialogComponent
+  ConfirmationDialogComponent,
+  GenericSelectComponent,
+  GenericDatepickerComponent
 
 ] as const;
 
@@ -42,7 +51,7 @@ const pipes = [
 
 ] as const;
 @NgModule({
-  declarations: [...components, ...directives, ...pipes, ],
+  declarations: [...components, ...directives, ...pipes,   ],
   imports: [
     BrowserModule,
     TranslateModule,
@@ -52,7 +61,12 @@ const pipes = [
     MatSidenavModule,
     MatListModule,
     MatIconModule,
-    NgApexchartsModule
+    NgApexchartsModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [...services],
   exports: [

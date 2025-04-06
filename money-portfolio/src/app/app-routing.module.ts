@@ -10,6 +10,7 @@ import { ExpensesComponent } from './mycomponents/expenses/expenses/expenses.com
 import { LoginComponent } from './mycomponents/login/login/login.component';
 import { SignUpComponent } from './mycomponents/signUp/sign-up/sign-up.component';
 import { navbarGuard } from './navbar.guard';
+import { IncomeComponent } from './mycomponents/income/components/income/income.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate:[navbarGuard] },
@@ -32,6 +33,7 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent, canActivate: [navbarGuard] },
   { path: 'report', component: ReportComponent, canActivate: [navbarGuard] },
   { path: 'goal', component: GoalComponent, canActivate: [navbarGuard] },
+  { path: 'income', component: IncomeComponent, canActivate: [navbarGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignUpComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Default route
