@@ -25,6 +25,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { GenericDatepickerComponent } from './components/generic-datepicker/generic-datepicker.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { GenericProgressBarComponent } from './components/generic-progress-bar/generic-progress-bar.component';
 const components = [
   InputComponent,
   BtnComponent,
@@ -35,7 +36,8 @@ const components = [
   StackedBarChartComponent,
   ConfirmationDialogComponent,
   GenericSelectComponent,
-  GenericDatepickerComponent
+  GenericDatepickerComponent,
+  GenericProgressBarComponent
 
 ] as const;
 
@@ -51,7 +53,7 @@ const pipes = [
 
 ] as const;
 @NgModule({
-  declarations: [...components, ...directives, ...pipes,   ],
+  declarations: [...components, ...directives, ...pipes,    ],
   imports: [
     BrowserModule,
     TranslateModule,

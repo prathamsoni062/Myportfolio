@@ -1,1 +1,26 @@
-<p>goal works!</p>
+<form [formGroup]="goalForm">
+    <div class="goal-header mt-3 mb-3">
+      <div class="heading-text">Financial Goal</div>
+      <app-btn [label]="btnLabel" (click)="addGoal()"></app-btn>
+    </div>
+  
+    <div class="row">
+      <div *ngFor="let goal of Goal" class="col-12 ps-1">
+        <app-generic-card [title]="goal.title" formControlName="totalExpenses">
+
+          <div class="d-flex justify-content-end mb-2">
+            <button mat-icon-button color="primary" (click)="editGoal(goal)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="deleteGoal(goal)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+  
+          <!-- Optional progress bar -->
+          <app-generic-progress-bar [percentage]="goalProgress"></app-generic-progress-bar>          
+        </app-generic-card>
+      </div>
+    </div>
+  </form>
+  

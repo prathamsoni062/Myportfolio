@@ -1,9 +1,11 @@
 import { CanActivateFn, Router } from '@angular/router';
 import { inject } from '@angular/core';
-import { UserService } from './user.service'; // Ensure this is correctly pointing to your UserService
+import { UserService } from './user.service';
+import { MsalService } from '@azure/msal-angular';
 
 export const navbarGuard: CanActivateFn = (route, state) => {
   const userService = inject(UserService);
+  const msalService = inject(MsalService);
   const router = inject(Router);
 
   const publicRoutes = ['/login', '/signup'];
@@ -13,14 +15,20 @@ export const navbarGuard: CanActivateFn = (route, state) => {
     return true;
   }
 
-  // Check if the user is logged in
+  // Check MSAL login status
+  const accounts = msalService.instance.getAllAccounts();
+  if (accounts.length > 0) {
+    msalService.instance.setActiveAccount(accounts[0]);
+    return true;
+  }
+
+  // Fallback: check your own app's login state
   if (userService.isLoggedIn()) {
     return true;
-  } else {
-    // Redirect to login if not logged in
-    console.log('Unauthorized access. Redirecting to login...');
-    // router.navigate(['/login']);    
-    userService.logOut(); // Clear session and navigate to login    
-    return false;
   }
+
+  // Not logged in: clear session and redirect
+  console.warn('Unauthorized access. Redirecting to login...');
+  userService.logOut(); // Clears session and navigates to login
+  return false;
 };

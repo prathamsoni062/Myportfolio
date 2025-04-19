@@ -13,8 +13,8 @@ import { navbarGuard } from './navbar.guard';
 import { IncomeComponent } from './mycomponents/income/components/income/income.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, canActivate:[navbarGuard] },
-  { path: 'home', component: HomeComponent, canActivate: [navbarGuard] },
+  { path: '', component: HomeComponent, },
+  { path: 'home', component: HomeComponent, },
   {
     path: 'dashboard',
     component: DashboardComponent,
